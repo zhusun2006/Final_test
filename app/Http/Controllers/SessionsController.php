@@ -22,11 +22,18 @@ class SessionsController extends Controller
 	}
 	
 	public function store(Request $request)
-	{
+	{	
 		$credentials = $this->validate($request,[
 			'email' => 'required | email | max:255',
 			'password' => 'required'
 		]);		
+		
+		$this->validate($request,[
+            'captcha' => 'required|captcha'
+        ], [
+            'captcha.required' => '验证码 不能为空',
+            'captcha.captcha' => '请输入正确的验证码',
+        ]);
 		
 		if(Auth::attempt($credentials,$request->has('remember'))){
 			//登录成功
@@ -39,6 +46,7 @@ class SessionsController extends Controller
 			return redirect()->back();
 		}
 	}
+
 	
 	public function __construct()
 	{

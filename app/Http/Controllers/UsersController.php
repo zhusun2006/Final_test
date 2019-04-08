@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers;
-use App\User;
+use App\Models\User;
 use Auth;
 
 class UsersController extends Controller
@@ -17,6 +17,10 @@ class UsersController extends Controller
 	public function show(User $user)
     {
         return view('users.show', compact('user'));
+    }
+	public function apply(User $user)
+    {
+        return view('users.apply', compact('user'));
     }
 	
 	public function edit(User $user)

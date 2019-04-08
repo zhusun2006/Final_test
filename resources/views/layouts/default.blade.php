@@ -2,10 +2,8 @@
 <html>
   <head>
     <title>@yield('title', '办公OA系统') - Laravel 测试</title>
-    <link rel="stylesheet" href="./css/app.css">
-	<link rel="stylesheet" href="../css/app.css">
-	<link rel="stylesheet" href="../../css/app.css">
-	<link rel="stylesheet" href="../../../css/app.css">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
   </head>
   <body>
     @include('layouts._header')
@@ -17,9 +15,7 @@
         @include('layouts._footer')
       </div>
 	</div>
-  <script src="./js/app.js"></script>
-  <script src="../js/app.js"></script>
-  <script src="../../js/app.js"></script>	
-  <script src="../../../js/app.js"></script>	
+  <script src="{{ mix('js/app.js') }}"></script>
+  
   </body>
 </html>
