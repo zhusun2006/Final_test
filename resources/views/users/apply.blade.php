@@ -13,7 +13,7 @@
 			<form class="form-horizontal" method="POST" action="{{ route('application' ,Auth::user()) }}" enctype="multipart/form-data">
 				{{ csrf_field() }} 
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			    <input type="text" name="user_id" value="{{ $user->id }}">
+			    <input type="hidden" name="user_id" value="{{ $user->id }}">
 			    <div class="form-group">
 			      <textarea class="form-control" rows="3" placeholder="请输入想提交的内容！" name="content"></textarea>
 			    </div>			      			

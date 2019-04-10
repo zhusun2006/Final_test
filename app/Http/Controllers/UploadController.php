@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\User;
+use App\Models\Upload;
 use Auth;
 
 class UploadController extends Controller
@@ -18,13 +19,14 @@ class UploadController extends Controller
     		//显示的属性更多
     		$fileCharater = $request->file('source');
     		$content = $request->only(['content']);
+
 			if($fileCharater == "" || $content == "")
 			{
 				session()->flash('danger', '上传文件或者内容不得为空！');
 				return view('users.apply', compact('user'));
 			}
-    		if ($fileCharater->isValid()) { //括号里面的是必须加的哦
-    			//如果括号里面的不加上的话，下面的方法也无法调用的
+    		if ($fileCharater->isValid()) { //判断是否为空
+
 				 $today = date('Y-m-d');
 				//storage_path().'/app/uploads/' 这里根据 /config/filesystems.php 文件里面的配置而定
 				//$dir = str_replace('\\','/',storage_path().'/app/uploads/'.$today);
@@ -37,12 +39,24 @@ class UploadController extends Controller
  
     			//获取文件的绝对路径
     			$path = $fileCharater->getRealPath();
- 
+
     			//定义文件名
     			$filename = date('Y-m-d-h-i-s').'.'.$ext;
- 
+    			$textname = date('Y-m-d-h-i-s').'.'.'txt';
+
+    			//将文件内容上传至服务器
+    			Storage::disk('upload')->put($today.'/'.$textname, $content);
+
+    			$upload = new Upload();
+    				$upload->name = $user->name;
+    				$upload->user_id = $user->id;
+    				$upload->content = $content['content'];
+    				$upload->datetime = $today;
+    			$upload->save();
+
+ 				exit();
     			//存储文件。disk里面的public。总的来说，就是调用disk模块里的public配置
-    			if(Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path)))
+    			if(Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path)) )
 				{
 					session()->flash('success', '上传成功！现将转至个人页面等待审核......');
 					return redirect()->route('users.show', [$user]);
