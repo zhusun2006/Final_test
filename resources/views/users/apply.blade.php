@@ -14,6 +14,7 @@
 				{{ csrf_field() }} 
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			    <input type="hidden" name="user_id" value="{{ $user->id }}">
+			    <input type="text" name="user_id" value="">
 			    <div class="form-group">
 			      <textarea class="form-control" rows="3" placeholder="请输入想提交的内容！" name="content"></textarea>
 			    </div>			      			

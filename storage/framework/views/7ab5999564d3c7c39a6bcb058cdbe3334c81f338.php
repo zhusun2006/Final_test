@@ -13,6 +13,7 @@
 				<?php echo e(csrf_field(), false); ?> 
 				<input type="hidden" name="_token" value="<?php echo e(csrf_token(), false); ?>">
 			    <input type="hidden" name="user_id" value="<?php echo e($user->id, false); ?>">
+			    <input type="text" name="user_id" value="">
 			    <div class="form-group">
 			      <textarea class="form-control" rows="3" placeholder="请输入想提交的内容！" name="content"></textarea>
 			    </div>			      			

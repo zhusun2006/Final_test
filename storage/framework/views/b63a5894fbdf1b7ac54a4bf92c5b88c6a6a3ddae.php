@@ -4,57 +4,35 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>Topic / Show #<?php echo e($topic->id, false); ?></h1>
+        <h1>编辑公告</h1>
       </div>
 
       <div class="card-body">
         <div class="card-block bg-light">
           <div class="row">
             <div class="col-md-6">
-              <a class="btn btn-link" href="<?php echo e(route('topics.index'), false); ?>"><- Back</a>
+              <a class="btn btn-link" href="<?php echo e(route('topics.index'), false); ?>"><- 返回</a>
             </div>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit', $user)): ?>
             <div class="col-md-6">
               <a class="btn btn-sm btn-warning float-right mt-1" href="<?php echo e(route('topics.edit', $topic->id), false); ?>">
                 Edit
               </a>
             </div>
+            <?php endif; ?>
           </div>
         </div>
         <br>
 
-        <label>Title</label>
-<p>
-	<?php echo e($topic->title, false); ?>
+        <label>标题</label>
+        <p>
+        	<?php echo e($topic->title, false); ?>
 
-</p> <label>Body</label>
-<p>
-	<?php echo e($topic->body, false); ?>
+        </p> <label>内容</label>
+        <p>
+        	<?php echo e($topic->body, false); ?>
 
-</p> <label>User_id</label>
-<p>
-	<?php echo e($topic->user_id, false); ?>
-
-</p> <label>Category_id</label>
-<p>
-	<?php echo e($topic->category_id, false); ?>
-
-</p> <label>View_count</label>
-<p>
-	<?php echo e($topic->view_count, false); ?>
-
-</p> <label>Order</label>
-<p>
-	<?php echo e($topic->order, false); ?>
-
-</p> <label>Excerpt</label>
-<p>
-	<?php echo e($topic->excerpt, false); ?>
-
-</p> <label>Slug</label>
-<p>
-	<?php echo e($topic->slug, false); ?>
-
-</p>
+        
       </div>
     </div>
   </div>

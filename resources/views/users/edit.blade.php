@@ -26,13 +26,28 @@
             </div>
 
             <div class="form-group">
+              <label for="email">职称：</label>
+              <input type="text" name="email" class="form-control" value="{{ $user->department }}" disabled>
+            </div>
+
+            <div class="form-group">
+              <label for="email">所属部门：</label>
+              <input type="text" name="email" class="form-control" value="{{ $user->position }}" disabled>
+            </div>
+
+            <div class="form-group">
+              <label for="email">电话：</label>
+              <input type="text" name="email" class="form-control" value="{{ $user->tel }}" disabled>
+            </div>
+
+            <div class="form-group">
               <label for="password">密码：</label>
-              <input type="password" name="password" class="form-control" value="{{ old('password') }}">
+              <input type="password" name="password" class="form-control" value="">
             </div>
 
             <div class="form-group">
               <label for="password_confirmation">确认密码：</label>
-              <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
+              <input type="password" name="password_confirmation" class="form-control" value="">
             </div>
 
             <button type="submit" class="btn btn-primary">更新</button>

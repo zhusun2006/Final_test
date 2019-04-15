@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container ">
+    <div>
     <a class="navbar-brand" href="<?php echo e(route('home'), false); ?>">办公OA系统</a>
+    <a class="navbar-brand" href="<?php echo e(route('topics.index'), false); ?>?">查看公告</a>
+  </div>
     <ul class="navbar-nav justify-content-end">
       <?php if(Auth::check()): ?>
         <li class="nav-item"><a class="nav-link" href="<?php echo e(route('users.index'), false); ?>">用户列表</a></li>

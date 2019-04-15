@@ -17,4 +17,10 @@ class TopicPolicy extends Policy
     {
         return true;
     }
+
+    public function create(User $currentUser, User $user)
+    {
+        return $currentUser->is_admin && $currentUser->id !== $user->id;
+    }
+
 }

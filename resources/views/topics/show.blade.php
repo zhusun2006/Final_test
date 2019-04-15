@@ -6,49 +6,33 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>Topic / Show #{{ $topic->id }}</h1>
+        <h1>编辑公告</h1>
       </div>
 
       <div class="card-body">
         <div class="card-block bg-light">
           <div class="row">
             <div class="col-md-6">
-              <a class="btn btn-link" href="{{ route('topics.index') }}"><- Back</a>
+              <a class="btn btn-link" href="{{ route('topics.index') }}"><- 返回</a>
             </div>
+            @can('edit', $user)
             <div class="col-md-6">
               <a class="btn btn-sm btn-warning float-right mt-1" href="{{ route('topics.edit', $topic->id) }}">
                 Edit
               </a>
             </div>
+            @endcan
           </div>
         </div>
         <br>
 
-        <label>Title</label>
-<p>
-	{{ $topic->title }}
-</p> <label>Body</label>
-<p>
-	{{ $topic->body }}
-</p> <label>User_id</label>
-<p>
-	{{ $topic->user_id }}
-</p> <label>Category_id</label>
-<p>
-	{{ $topic->category_id }}
-</p> <label>View_count</label>
-<p>
-	{{ $topic->view_count }}
-</p> <label>Order</label>
-<p>
-	{{ $topic->order }}
-</p> <label>Excerpt</label>
-<p>
-	{{ $topic->excerpt }}
-</p> <label>Slug</label>
-<p>
-	{{ $topic->slug }}
-</p>
+        <label>标题</label>
+        <p>
+        	{{ $topic->title }}
+        </p> <label>内容</label>
+        <p>
+        	{{ $topic->body }}
+        
       </div>
     </div>
   </div>

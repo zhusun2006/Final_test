@@ -10,3 +10,12 @@
       </ul>
   </div>
 </div>
+
+
+<div class="card ">
+  <div class="card-body">
+    <a href="{{ route('topics.create', array('is_admin'=>Auth::user()->is_admin)) }}" class="btn btn-success btn-block" aria-label="Left Align">
+      <i class="fas fa-pencil-alt mr-2"></i>  发布公告
+    </a>
+  </div>
+</div>
