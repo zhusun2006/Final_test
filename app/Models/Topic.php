@@ -37,9 +37,6 @@ class Topic extends Model
         return $query->orderBy('created_at', 'desc');
     }
 
-
-    
-
     public function category()
     {
         return $this->belongsTo(Category::class);

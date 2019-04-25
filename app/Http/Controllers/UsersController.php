@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers;
 use App\Models\User;
+use App\Models\Thingkind;
 use Auth;
 
 class UsersController extends Controller
@@ -18,9 +19,10 @@ class UsersController extends Controller
     {
         return view('users.show', compact('user'));
     }
-	public function apply(User $user)
+	public function apply(User $user, Thingkind $kinder)
     {
-        return view('users.apply', compact('user'));
+    	$kind = Thingkind::all();
+        return view('users.apply', compact('user', 'kind', 'kinder'));
     }
 	
 	public function edit(User $user)

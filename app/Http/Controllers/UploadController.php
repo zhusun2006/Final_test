@@ -52,7 +52,7 @@ class UploadController extends Controller
     				$upload->user_id = $user->id;
     				$upload->content = $content['content'];
                     $upload->route = 'upload/'.$today.'/'.$textname;
-    				$upload->datetime = $today;;
+    				$upload->datetime = $today;
     			$upload->save();
 
  				exit();
