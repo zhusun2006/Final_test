@@ -10,7 +10,7 @@
           <h2 class="">
             <i class="far fa-edit"></i>
             @if($topic->id)
-            编辑文章
+            编辑公告
             @else
             发布公告
             @endif

@@ -6,7 +6,7 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>编辑公告</h1>
+        <h1>浏览公告</h1>
       </div>
 
       <div class="card-body">

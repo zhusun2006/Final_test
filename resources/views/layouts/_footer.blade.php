@@ -1,10 +1,11 @@
 <footer class="footer">
-  <img class="brand-icon" src="https://iocaffcdn.phphub.org/uploads/sites/KDiyAbV0hj1ytHpRTOlVpucbLebonxeX.png">
-  <a href="https://laravel-china.org/courses" target=_blank>
-    刻意练习，每日精进
-  </a>
+  <div class="container">
+    <p class="float-left">
+    	<a href="http://weibo.com/u/1837553744?is_hot=1" target="_blank">A1551416</a>设计的基于PHP的办公自动化系统 <span style="color: #e27575;font-size: 14px;">❤</span>
+    </p>
 
-  <div class="float-right">
-    <a href="{{ route('about') }}" >关于</a>
+    <div class="float-right">
+    	<a href="{{ route('about') }}" >关于</a>
+  	</div>
   </div>
 </footer>
