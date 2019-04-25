@@ -24,6 +24,7 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 Route::get('/users/{user}/apply', 'UsersController@apply')->name('apply');
 Route::post('/users/{user}/application', 'UploadController@load')->name('application');
+Route::get('/notices', 'NotificationsController@index')->name('notice');
 
 
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
