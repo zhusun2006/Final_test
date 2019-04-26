@@ -28,4 +28,9 @@ class NotificationsController extends Controller
         
         return view('notifications.index', compact('notifications'));
     }
+
+    public function check(Notifications $notice)
+    {
+        return view('replies.index', compact('notifications'));
+    }
 }

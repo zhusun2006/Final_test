@@ -1,7 +1,6 @@
-@extends('layouts.default')
-@section('title','核查审计')
+<?php $__env->startSection('title','核查审计'); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
  <div class="container">
     <div class="col-md-10 offset-md-1">
@@ -13,9 +12,9 @@
             核查审计
           </h2>
           <hr>
-            <form action="{{ route('replies.store') }}" method="POST" accept-charset="UTF-8">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              @include('shared._errors')
+            <form action="<?php echo e(route('replies.store'), false); ?>" method="POST" accept-charset="UTF-8">
+              <input type="hidden" name="_token" value="<?php echo e(csrf_token(), false); ?>">
+              <?php echo $__env->make('shared._errors', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
               <div class="form-group">
                 <input class="form-control" type="text" name="user_id" value="" placeholder="请输入提交者"/>
                 <br>
@@ -42,4 +41,5 @@
     </div>
   </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

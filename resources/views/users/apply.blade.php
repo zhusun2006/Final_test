@@ -21,7 +21,6 @@
               	<input class="form-control" type="text" name="user_id" value="" placeholder="请输入提交者"/>
               	<br>
                 <input class="form-control" type="text" name="title" value="" placeholder="请填入标题"/>
-                <input type="hidden" name="topic_id" value="{{ 1 }}">
               </div>
 
               <div class="form-group">
