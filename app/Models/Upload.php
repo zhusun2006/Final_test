@@ -8,7 +8,7 @@ class Upload extends Model
 {
     //
     protected $fillable = [
-        'name', 'user_id', 'content',
+        'title', 'user_id', 'content',
     ];
 
     public function user()

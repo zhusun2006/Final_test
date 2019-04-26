@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reply;
+use App\Models\User;
+use App\Models\Notifications;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReplyRequest;
-use App\Models\Notifications;
-use App\Models\User;
 use Auth;
 
 class RepliesController extends Controller
@@ -16,7 +16,6 @@ class RepliesController extends Controller
     {
     	$this->middleware('auth');
     }
-
 
 	public function store(ReplyRequest $request, Reply $reply, User $user)
 	{
@@ -43,19 +42,13 @@ class RepliesController extends Controller
         $update->save();
 
         $fallback = route('users.show', Auth::user());
-		return redirect()->intended($fallback)->with('success', '发送成功！');;
-		
+		return redirect()->intended($fallback)->with('success', '申请提交成功，现转至个人主页面！');;
 	}
-
-    public function notice(){
-        
-    }
 
 	public function destroy(Reply $reply)
 	{
 		// $this->authorize('destroy', $reply);
-  //       $reply->delete();
-
-  //       return redirect()->route('replies.index')->with('success', '评论删除成功！');
+        // $reply->delete();
+        // return redirect()->route('replies.index')->with('success', '评论删除成功！');
 	}
 }

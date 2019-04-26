@@ -18,7 +18,7 @@ class UploadController extends Controller
     		//但是在laravel里面有更好的封装好的方法，就是下面这个
     		//显示的属性更多
     		$fileCharater = $request->file('source');
-    		$content = $request->only(['content']);
+    		// $content = $request->only(['content']);
 
 			if($fileCharater == "" || $content == "")
 			{
@@ -48,26 +48,21 @@ class UploadController extends Controller
     			Storage::disk('upload')->put($today.'/'.$textname, $content);
 
     			$upload = new Upload();
-    				$upload->name = $user->name;
+    				$upload->title = $user->name;
     				$upload->user_id = $user->id;
     				$upload->content = $content['content'];
                     $upload->route = 'upload/'.$today.'/'.$textname;
     				$upload->datetime = $today;
     			$upload->save();
-
- 				exit();
     			//存储文件。disk里面的public。总的来说，就是调用disk模块里的public配置
     			if(Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path)) )
 				{
-					session()->flash('success', '上传成功！现将转至个人页面等待审核......');
-					return redirect()->route('users.show', [$user]);
+                    return true；	
 				}else{
-					session()->flash('warning', '上传失败！请查看是否有违规内容.');
-					return view('users.apply', compact('user'));
+					return false；
 				}
     		}else{
-				session()->flash('danger', '请选择上传的文件！');
-				return view('users.apply', compact('user'));
+				return false；
 			}
     	}
 
