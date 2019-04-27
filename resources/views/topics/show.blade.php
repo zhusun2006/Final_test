@@ -18,7 +18,7 @@
             @can('edit', $user)
             <div class="col-md-6">
               <a class="btn btn-sm btn-warning float-right mt-1" href="{{ route('topics.edit', $topic->id) }}">
-                Edit
+                编辑
               </a>
             </div>
             @endcan

@@ -4,17 +4,15 @@ namespace App\Models;
 
 class Reply extends Model
 {
-    protected $fillable = ['content'];
-
-
+    protected $fillable = ['content','kind','title','user_id','sender_id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function topic()
+    public function notice()
     {
-        return $this->belongsTo(AnTopic::class);
+        return $this->belongsTo(Notifications::class);
     }
 }

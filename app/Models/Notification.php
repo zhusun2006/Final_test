@@ -1,10 +1,10 @@
 <?php
 namespace App\Models;
 
-class Notifications extends Model
+class Notification extends Model
 {
     protected $fillable = [
-        'content', 'sender', 'achiever','datetime','kind'
+        'content', 'sender', 'achiever','datetime','kind','title','reply_id'
     ];
 
     public function user()
