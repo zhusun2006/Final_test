@@ -22,7 +22,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="<?php echo e(route('users.show', Auth::user()), false); ?>">个人中心</a>
             <a class="dropdown-item" href="<?php echo e(route('users.edit', Auth::user()), false); ?>">编辑资料</a>
-			      <a class="dropdown-item" href="<?php echo e(route('apply', Auth::user()), false); ?>">事故申请</a>
+			      <a class="dropdown-item" href="<?php echo e(route('apply', Auth::user()), false); ?>">申请审核</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="logout" href="#">
               <form action="<?php echo e(route('logout'), false); ?>" method="POST">

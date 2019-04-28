@@ -20,11 +20,11 @@ class UploadController extends Controller
     		$fileCharater = $request->file('source');
     		// $content = $request->only(['content']);
 
-			if($fileCharater == "" || $content == "")
-			{
-				session()->flash('danger', '上传文件或者内容不得为空！');
-				return view('users.apply', compact('user'));
-			}
+			// if($fileCharater == "" || $content == "")
+			// {
+			// 	session()->flash('danger', '上传文件或者内容不得为空！');
+			// 	return view('users.apply', compact('user'));
+			// }
     		if ($fileCharater->isValid()) { //判断是否为空
 
 				 $today = date('Y-m-d');

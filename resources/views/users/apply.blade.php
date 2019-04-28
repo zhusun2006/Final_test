@@ -10,10 +10,10 @@
         <div class="card-body">
           <h2 class="">
             <i class="far fa-edit"></i>
-            申请审计
+            申请审批
           </h2>
           <hr>
-            <form action="{{ route('replies.store') }}" method="POST" accept-charset="UTF-8">
+            <form action="{{ route('replies.store') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               
               @include('shared._errors')
@@ -27,16 +27,19 @@
                 <select class="form-control" name="category_id" required>
                   <option value="" name="kind" hidden disabled selected>分类</option>
                       	<option value="报销申请">报销申请</option>
-            						<option value="请假申请">请假申请</option>
-            						<option value="物资申请">物资申请</option>
+            			<option value="请假申请">请假申请</option>
+            			<option value="物资申请">物资申请</option>
                 </select>
               </div>
+              
               <div class="form-group">
                 <textarea name="content" class="form-control" id="editor" rows="6" placeholder="请填入内容" required></textarea>
               </div>
-             <!--  <label for="file">选择附加文件</label>
-				<input id="file" type="file" class="form-control" name="source">
-				<br> -->
+			  <div class="form-group">
+			    <label class="sr-only" for="inputfile">文件输入</label>
+			    <input type="file" id="file" name="file" required>
+			  </div>
+
               <div class="well well-sm">
                 <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 提交</button>          
               </div>

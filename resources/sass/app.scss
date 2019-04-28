@@ -1,5 +1,14 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+// Variables
+@import 'variables';
+
+// Fontawesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
 
 body {
     font-size: 14px;
@@ -107,4 +116,19 @@ footer {
 
 /* Topic Index Page */
 .topics-index-page, .categories-show-page {
+}
+
+.notification-badge {
+  .badge {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .badge-secondary {
+    background-color: #EBE8E8;
+  }
+
+  .badge-hint {
+    background-color: #d15b47 !important;
+  }
 }

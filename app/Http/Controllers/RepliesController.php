@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Reply;
 use App\Models\User;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ReplyRequest;
+use App\Http\Requests;
 use Auth;
 
 class RepliesController extends Controller
@@ -17,12 +17,31 @@ class RepliesController extends Controller
     	$this->middleware('auth');
     }
 
-	public function store(ReplyRequest $request, Reply $reply, User $user)
+	public function store(Request $request, Reply $reply, User $user)
 	{
         //获取日期
 		$today = date('Y-m-d');
         //获取提交者的用户Id
 		$id = $request->user_id;
+        $file = $request->file('file');
+
+        // dd($file);
+        // exit;
+
+        $dir = storage_path().'/app/upload/'.$today;
+        if(!is_dir($dir)){
+            mkdir($dir);
+        }               
+        //获取文件的扩展名 
+        $ext = $file->getClientOriginalExtension();
+
+        //获取文件缓存的绝对路径
+        $path = $file->getRealPath();
+
+        //定义文件名
+        $filename = date('Y-m-d-h-i-s').'.'.$ext;
+
+
 
         if($request->user_id == Auth::id()){
             session()->flash('danger','不允许将申请发送给自身！');
@@ -40,8 +59,10 @@ class RepliesController extends Controller
             $reply->user_id = $request->user_id;
             $reply->sender_id = Auth::id();
             $reply->kind = $request->category_id;
+            $reply->route = 'upload/'.$today.'/'.$filename;
             $reply->admin_reply = $request->adminreply;
             $reply->save();
+            Storage::disk('upload')->put($today.'/'.$filename);
             //获取保存记录的id
             $reply_id = Reply::where(['user_id' => $request->user_id, 'title' => $request->title, 'content' => $request->content])->value('id');
             //将申请或者回复提交至消息通知中
@@ -90,7 +111,9 @@ class RepliesController extends Controller
                     $reply->sender_id = Auth::id();
                     $reply->kind = $request->category_id;
                     $reply->admin_reply = $request->adminreply;
+                    $reply->route = 'upload/'.$today.'/'.$filename;
                     $reply->save();
+                    Storage::disk('upload')->put($today.'/'.$filename);
                     //获取保存记录的id
                     $reply_id = Reply::where(['user_id' => $request->user_id, 'title' => $request->title, 'content' => $request->content])->value('id');
                     //将申请或者回复提交至消息通知中
