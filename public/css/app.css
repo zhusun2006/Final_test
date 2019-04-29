@@ -17445,30 +17445,41 @@ section.user_info h1 {
 
 /* footer */
 
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-  font-size: 13px;
-  font-weight: bold;
+html {
+  position: relative;
+  min-height: 100%;
 }
 
-footer a {
-  color: #555;
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
 }
 
-footer a:hover {
-  color: #222;
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #212529;
 }
 
-footer small {
-  float: left;
+.footer .container {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
-footer img.brand-icon {
-  width: 17px;
-  height: 17px;
+.footer .container .float-right {
+  margin: 20px 0;
+}
+
+.footer .container p {
+  margin: 20px 0;
+  color: #c1c1c1;
+}
+
+.footer .container p a {
+  color: inherit;
 }
 
 .register-page img.captcha {

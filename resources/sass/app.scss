@@ -44,29 +44,40 @@ section.user_info {
 }
 
 /* footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
 
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-  font-size: 13px;
-  font-weight: bold;
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
 
-  a {
-    color: #555;
-  }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #212529;
 
-  a:hover {
-    color: #222;
-  }
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
 
-  small {
-    float: left;
-  }
-  img.brand-icon {
-    width: 17px;
-    height: 17px;
+    .float-right{
+      margin: 20px 0;
+    }
+
+    p {
+      margin: 20px 0;
+      color: #c1c1c1;
+
+      a {
+        color: inherit;
+      }
+    }
   }
 }
 
