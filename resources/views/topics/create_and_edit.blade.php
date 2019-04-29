@@ -40,7 +40,7 @@
                       <option value="{{ $value->id }}" {{ $topic->category_id == $value->id ? 'selected' : '' }}>
                         {{ $value->name }}
                       </option>
-                    @endforeach
+                  @endforeach
                 </select>
               </div>
 

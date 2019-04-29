@@ -27,7 +27,9 @@ Route::post('/users/{user}/application', 'UploadController@load')->name('applica
 
 Route::get('/notices', 'NotificationsController@index')->name('notice');
 Route::get('/check', 'NotificationsController@check')->name('check');
+Route::get('/result', 'NotificationsController@result')->name('result');
 
+Route::get('/check/download', 'UploadController@download')->name('download');
 
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);

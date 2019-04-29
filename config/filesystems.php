@@ -45,12 +45,12 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('uploads'),
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/upload'),
+            'root' => public_path('uploads'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -66,7 +66,7 @@ return [
 		
 		'upload' => [
 		'driver' => 'local',
-		'root' => storage_path('app/upload'),
+		'root' => public_path('uploads'),
 		],
 
     ],

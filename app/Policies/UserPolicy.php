@@ -41,4 +41,10 @@ class UserPolicy
     {
         return $currentUser->is_admin && $currentUser->id !== $user->id;
     }
+
+    // 只有管理员可以审核信息
+	public function check(User $currentUser, User $user)
+	{
+		return $currentUser->is_admin && $currentUser->id !== $user->id;
+	}
 }

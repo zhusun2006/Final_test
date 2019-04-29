@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', '我的通知')
+@section('title', '消息通知')
 
 @section('content')
   <div class="container">
@@ -10,7 +10,7 @@
         <div class="card-body">
 
           <h3 class="text-xs-center">
-            <i class="far fa-bell" aria-hidden="true"></i>我的通知
+            <i class="far fa-bell" aria-hidden="true"></i>消息通知
           </h3>
           <hr>
 
@@ -19,6 +19,7 @@
               @foreach ($notifications as $notification)
                 @include('notifications._replied', ['notifications' => $notifications])      
               @endforeach
+              <br/>
               {!! $notifications->render() !!}
             </div>
 

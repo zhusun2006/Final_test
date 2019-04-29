@@ -13,7 +13,7 @@
         <div class="card-block bg-light">
           <div class="row">
             <div class="col-md-6">
-              <a class="btn btn-link" href="{{ route('topics.index') }}"><- 返回</a>
+              <a class="btn btn-link" href="{{ route('topics.index') }}"><-返回</a>
             </div>
             @can('edit', $user)
             <div class="col-md-6">

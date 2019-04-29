@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
 		\App\Models\Reply::observe(\App\Observers\ReplyObserver::class);
 		\App\Models\Topic::observe(\App\Observers\TopicObserver::class);
         //
+        Carbon::setLocale('zh');
 		Schema::defaultStringLength(191);
     }
 
