@@ -20,7 +20,8 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{ route('users.show', Auth::user()) }}">个人中心</a>
             <a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">编辑资料</a>
-			      <a class="dropdown-item" href="{{ route('apply', Auth::user()) }}">申请审核</a>
+			<a class="dropdown-item" href="{{ route('apply', Auth::user()) }}">申请审核</a>
+			<a class="dropdown-item" href="{{ route('thread', Auth::user()) }}">审核进度</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="logout" href="#">
               <form action="{{ route('logout') }}" method="POST">

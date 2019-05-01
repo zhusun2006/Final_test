@@ -26,6 +26,7 @@ Route::get('/users/{user}/apply', 'UsersController@apply')->name('apply');
 Route::post('/users/{user}/application', 'UploadController@load')->name('application');
 
 Route::get('/notices', 'NotificationsController@index')->name('notice');
+Route::get('/threads', 'NotificationsController@watch')->name('thread');
 Route::get('/check', 'NotificationsController@check')->name('check');
 Route::get('/result', 'NotificationsController@result')->name('result');
 

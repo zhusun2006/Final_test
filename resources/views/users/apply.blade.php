@@ -18,7 +18,7 @@
               <input type="hidden" name="is_check" value="0"/>
               @include('shared._errors')
               <div class="form-group">           
-              	<input class="form-control" type="text" name="user_id" value="" placeholder="请输入提交者"/>
+              	<input class="form-control" type="text" name="user_name" value="" placeholder="请输入提交者"/>
               	<br>
                 <input class="form-control" type="text" name="title" value="" placeholder="请填入标题"/>
               </div>
@@ -27,8 +27,8 @@
                 <select class="form-control" name="category_id" required>
                   <option value="" name="kind" hidden disabled selected>分类</option>
                   <option value="报销申请">报销申请</option>
-            			<option value="请假申请">请假申请</option>
-            			<option value="物资申请">物资申请</option>
+	              <option value="请假申请">请假申请</option>
+	              <option value="物资申请">物资申请</option>
                 </select>
               </div>
               

@@ -18,7 +18,7 @@
               @include('shared._errors')
               <div class="form-group">
                 <label for="name">申请者：</label>
-                <input class="form-control" type="text" name="user_id" value="{{ $reply[0]->sender_id }} " disabled/>
+                <input class="form-control" type="text" name="user_name" value="{{ $reply[0]->sender_id }} " disabled/>
                 <br>
                 <label for="name">标题：</label>
                 <input class="form-control" type="text" name="title" value="{{ $reply[0]->title }} " disabled/>

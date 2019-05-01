@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', '我的通知'); ?>
+<?php $__env->startSection('title', '消息通知'); ?>
 
 <?php $__env->startSection('content'); ?>
   <div class="container">
@@ -8,7 +8,7 @@
         <div class="card-body">
 
           <h3 class="text-xs-center">
-            <i class="far fa-bell" aria-hidden="true"></i>我的通知
+            <i class="far fa-bell" aria-hidden="true"></i>消息通知
           </h3>
           <hr>
 
@@ -17,6 +17,7 @@
               <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php echo $__env->make('notifications._replied', ['notifications' => $notifications], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>      
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <br/>
               <?php echo $notifications->render(); ?>
 
             </div>

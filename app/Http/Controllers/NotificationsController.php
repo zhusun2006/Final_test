@@ -19,7 +19,7 @@ class NotificationsController extends Controller
     public function index()
     {
         // 获取登录用户的所有通知
-        $notifications = Notification::where('achiever', Auth::id())->paginate(5);
+        $notifications = Notification::where('achiever', Auth::id())->paginate(10);
         // var_dump($notifications);
         // 标记为已读，未读数量清零
         $update = User::find(Auth::id());
@@ -27,6 +27,14 @@ class NotificationsController extends Controller
         $update->save();
         
         return view('notifications.index', compact('notifications'));
+    }
+
+    public function watch()
+    {
+        // 获取登录用户所有发起的审核
+        $user_name = User::where('id', Auth::id())->value('name');
+        $replies = Reply::where('sender_id', $user_name)->paginate(10);
+        return view('notifications.thread', compact('replies'));
     }
 
     public function check(Request $request, User $user)
