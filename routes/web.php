@@ -23,7 +23,6 @@ Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 Route::get('/users/{user}/apply', 'UsersController@apply')->name('apply');
-Route::post('/users/{user}/application', 'UploadController@load')->name('application');
 
 Route::get('/notices', 'NotificationsController@index')->name('notice');
 Route::get('/threads', 'NotificationsController@watch')->name('thread');
@@ -35,3 +34,4 @@ Route::get('/check/download', 'UploadController@download')->name('download');
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+

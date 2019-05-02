@@ -22,18 +22,18 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="<?php echo e(route('users.show', Auth::user()), false); ?>">个人中心</a>
             <a class="dropdown-item" href="<?php echo e(route('users.edit', Auth::user()), false); ?>">编辑资料</a>
-			<a class="dropdown-item" href="<?php echo e(route('apply', Auth::user()), false); ?>">申请审核</a>
-			<a class="dropdown-item" href="<?php echo e(route('thread', Auth::user()), false); ?>">审核进度</a>
+      			<a class="dropdown-item" href="<?php echo e(route('apply', Auth::user()), false); ?>">申请审核</a>
+      			<a class="dropdown-item" href="<?php echo e(route('thread', Auth::user()), false); ?>">审核进度</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" id="logout" href="#">
-              <form action="<?php echo e(route('logout'), false); ?>" method="POST">
-                <?php echo e(csrf_field(), false); ?>
+              <a class="dropdown-item" id="logout" href="#">
+                <form action="<?php echo e(route('logout'), false); ?>" method="POST">
+                  <?php echo e(csrf_field(), false); ?>
 
-                <?php echo e(method_field('DELETE'), false); ?>
+                  <?php echo e(method_field('DELETE'), false); ?>
 
-                <button class="btn btn-block btn-danger" type="submit" name="button">退出</button>
-              </form>
-            </a>
+                  <button class="btn btn-block btn-danger" type="submit" name="button">退出</button>
+                </form>
+              </a>
           </div>
         </li>
       <?php else: ?>

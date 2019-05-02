@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'tel'                   => '电话',
     'online'                => '在线',
     'login'                 => '登录',
     'logout'                => '登出',

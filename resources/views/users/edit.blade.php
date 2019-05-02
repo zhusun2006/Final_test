@@ -12,11 +12,12 @@
         @include('shared._errors')
 
         <form method="POST" action="{{ route('users.update', $user->id )}}">
+            <input type="hidden" name="is_check" value="1"/>
             {{ method_field('PATCH') }}
             {{ csrf_field() }}
 
             <div class="form-group">
-              <label for="name">名称：</label>
+              <label for="name">用户名：</label>
               <input type="text" name="name" class="form-control" value="{{ $user->name }}">
             </div>
 
@@ -26,27 +27,27 @@
             </div>
 
             <div class="form-group">
-              <label for="email">职称：</label>
-              <input type="text" name="email" class="form-control" value="{{ $user->department }}" disabled>
+              <label for="department">职称：</label>
+              <input type="text" name="department" class="form-control" value="{{ $user->department }}" disabled>
             </div>
 
             <div class="form-group">
-              <label for="email">所属部门：</label>
-              <input type="text" name="email" class="form-control" value="{{ $user->position }}" disabled>
+              <label for="position">所属部门：</label>
+              <input type="text" name="position" class="form-control" value="{{ $user->position }}" disabled>
             </div>
 
             <div class="form-group">
-              <label for="email">电话：</label>
-              <input type="text" name="email" class="form-control" value="{{ $user->tel }}" disabled>
+              <label for="tel">电话：</label>
+              <input type="text" name="tel" class="form-control" value="{{ $user->tel }}" >
             </div>
 
             <div class="form-group">
-              <label for="password">密码：</label>
+              <label for="password">密码(非必填)：</label>
               <input type="password" name="password" class="form-control" value="">
             </div>
 
             <div class="form-group">
-              <label for="password_confirmation">确认密码：</label>
+              <label for="password_confirmation">确认密码(非必填)：</label>
               <input type="password" name="password_confirmation" class="form-control" value="">
             </div>
 
