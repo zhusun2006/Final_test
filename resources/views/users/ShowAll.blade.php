@@ -28,7 +28,7 @@
         @endif
       @endif
 		@can('destroy', $user)
-			<form action="{{ route('users.destroy', $user->id) }}" method="post" class="float-right" onsubmit="return confirm('您确定要删除本条微博吗？');">
+			<form action="{{ route('users.destroy', $user->id) }}" method="post" class="float-right" onsubmit="return confirm('您确定要删除该用户吗？');">
 				{{ csrf_field() }}
 				{{ method_field('DELETE') }}
 				<button type="submit" class="btn btn-sm btn-danger delete-btn">删除</button>

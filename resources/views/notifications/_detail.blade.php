@@ -15,7 +15,7 @@
     <form action="{{ route('replies.destroy', $reply->id ) }}" method="post" class="float-right" onsubmit="return confirm('您确定要执行撤销操作吗？');">
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
-      <button type="submit" class="btn btn-sm btn-danger delete-btn" >>撤销</button>
+      <button type="submit" class="btn btn-sm btn-danger delete-btn" >撤销</button>
     </form>
     <div class="reply-content">
       类型：{!! $reply->kind !!}
