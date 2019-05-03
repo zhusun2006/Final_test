@@ -11,7 +11,6 @@ class UploadController extends Controller
 {
     //管理文件下载
 	public function download(Request $request){
-
         $re_file = array_keys($request->all());
         if($re_file != null)
         {

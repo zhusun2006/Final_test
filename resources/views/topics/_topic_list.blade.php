@@ -26,10 +26,10 @@
             </a>
 
             <span> • </span>
-            <a class="text-secondary" href="{{ route('users.show', [$topic->user_id]) }}" title="{{ $topic->user->name }}">
+            <span class="text-secondary"  title="{{ $topic->user->name }}">
               <i class="far fa-user"></i>
               {{ $topic->user->name }}
-            </a>
+            </span>
      
             <span> • </span>
             <i class="far fa-clock"></i>

@@ -31,7 +31,7 @@ class SessionsController extends Controller
 		$this->validate($request,[
             'captcha' => 'required|captcha'
         ], [
-            'captcha.required' => '验证码 不能为空',
+            'captcha.required' => '验证码不能为空',
             'captcha.captcha' => '请输入正确的验证码',
         ]);
 		

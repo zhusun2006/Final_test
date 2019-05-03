@@ -6,7 +6,7 @@
 
   <div class="col-lg-3 col-md-3 hidden-sm hidden-xs user-info">
     <div class="card ">
-      <img class="card-img-top" src="https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/600/h/600" alt="{{ $user->name }}">
+      <img class="card-img-top" src="{{ $user->avatar }}" alt="{{ $user->name }}">
       <div class="card-body">
             <h5><strong>用户名：</strong></h5>
             <p>{{ $user->name }}</p>
@@ -30,9 +30,13 @@
           <br/>
       	<div class="mb-1" id="remember-one" style="display: block;">
       		@if($user->remember_thing == null)
-      		暂无数据 ~_~
+      		<div class="form-group">
+              <textarea name="remember_thing" class="form-control" id="editor" rows="5" disabled>暂无数据~_~</textarea>
+          </div>  
       		@else
-      		{{ $user->remember_thing }}
+          <div class="form-group">
+              <textarea name="remember_thing" class="form-control" id="editor" rows="5" disabled>{{ $user->remember_thing }}</textarea>
+          </div> 
       		@endif
       	</div>
       	<form method="POST" id="remember-two" action="{{ route('users.update', $user->id )}}" style="display: none;">
@@ -40,8 +44,8 @@
       		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	        <input type="hidden" name="is_check" value="3"/>
 	        <div class="form-group">
-                <textarea name="remember_thing" class="form-control" id="editor" rows="15" placeholder="请填入内容">{{ $user->remember_thing }}</textarea>
-            </div>	    
+              <textarea name="remember_thing" class="form-control" id="editor" rows="5" placeholder="请填入内容">{{ $user->remember_thing }}</textarea>
+          </div>	    
         	<button type="submit" class="btn btn-primary">更新</button>
         </form>
         	<button id="btn-remember" class="btn btn-primary" onclick="setremember()">设置</button>
@@ -56,9 +60,13 @@
       	<br/>
       	<div class="mb-1" id="arrange-one" style="display: block;">
       		@if($user->arrangement == null)
-      		暂无数据 ~_~
+          <div class="form-group">
+              <textarea name="content_arr" class="form-control" id="editor" rows="15" disabled>暂无数据 ~_~</textarea>
+          </div>
       		@else
-      		{{ $user->arrangement }}
+          <div class="form-group">
+              <textarea name="content_arr" class="form-control" id="editor" rows="15" disabled>{{ $user->arrangement }}</textarea>
+          </div>
       		@endif
       	</div>
       	<form method="POST" id="arrange-two" action="{{ route('users.update', $user->id )}}" style="display: none;">
@@ -66,8 +74,8 @@
       		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	        <input type="hidden" name="is_check" value="2"/>
 	        <div class="form-group">
-                <textarea name="content_arr" class="form-control" id="editor" rows="15" placeholder="请填入内容">{{ $user->arrangement }}</textarea>
-            </div>	    
+              <textarea name="content_arr" class="form-control" id="editor" rows="15" placeholder="请填入内容">{{ $user->arrangement }}</textarea>
+          </div>	    
         	<button type="submit" class="btn btn-primary">更新</button>
         </form>
         	<button id="btn-arrange" class="btn btn-primary" onclick="setarrange()">设置</button>

@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Handlers\ImageUploadHandler;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers;
@@ -13,14 +15,16 @@ class UsersController extends Controller
     {
         return view('users.create');
     }
-	
+
 	public function show(User $user)
     {
     	$this->authorize('update', $user);
         return view('users.show', compact('user'));
     }
+
 	public function apply(User $user)
     {
+    	$this->authorize('update', $user);
         return view('users.apply', compact('user'));
     }
 	
@@ -30,10 +34,10 @@ class UsersController extends Controller
 		return view('users.edit', compact('user'));
 	}
 	
-	public function index()
+	public function index(User $user)
 	{
 		$users = User::paginate(5);
-		return view('users.ShowAll', compact('users'));
+		return view('users.showall', compact('users'));
 	}
 	
 	public function destroy(User $user)
@@ -44,22 +48,22 @@ class UsersController extends Controller
 		return back();
 	}
 	
-	public function update(User $user, Request $request)
+	public function update(User $user, UserRequest $request, ImageUploadHandler $uploader)
 	{
 		$check = $request->is_check;
-		var_dump($check);
 		if($check == 1)
 		{
 			$this->authorize('update',$user);
-			$this->validate($request,[
-				'name' => 'required|max:80',
-				'password' => 'nullable|confirmed|min:6',
-				'tel' => 'required|min:11'
-			]);
-
 			$data = [];
-	        $data['name'] = $request->name;
+			//执行头像数据上传
+	        if ($request->avatar) {
+	            $result = $uploader->saveimage($request->avatar, 'avatars', $user->id);
+	            if ($result) {
+	                $data['avatar'] = $result['path'];
+	            }
+	        }
 	        $data['tel'] = $request->tel;
+	        //判断用户的密码是否需要更新
 	        if ($request->password) {
 	            $data['password'] = bcrypt($request->password);
 	        }
@@ -73,36 +77,56 @@ class UsersController extends Controller
 			$data = [];
 	        $data['arrangement'] = $request->content_arr;
 	        $user->update($data);
-	        session()->flash('success','更新成功！');
+	        session()->flash('success','日常安排更新成功！');
 			return redirect()->route('users.show',$user->id);
 		}
 		if($check == 3)
 		{
 			$this->authorize('update',$user);
-			$this->authorize('update',$user);
 			$data = [];
 	        $data['remember_thing'] = $request->remember_thing;
 	        $user->update($data);
-	        session()->flash('success','更新成功！');
+	        session()->flash('success','备忘录更新成功！');
 			return redirect()->route('users.show',$user->id);
 		}
-	}
-
-	public function anupdate(User $user, Request $request)
-	{
-		$this->authorize('update',$user);
-		var_dump($$request->content_arr);
-		exit;
-		
-		session()->flash('success','更新成功！');
-		
-		return redirect()->route('users.show',$user->id);
+		if($check == 'admin')
+		{
+			$this->authorize('check',$user);
+			
+			$data = [];
+			//执行头像数据上传
+	        if ($request->avatar) {
+	            $result = $uploader->saveimage($request->avatar, 'avatars', $user->id);
+	            if ($result) {
+	                $data['avatar'] = $result['path'];
+	            }
+	        }
+	        if ($request->name) {
+	            $data['name'] = $request->name;
+	        }
+	        if ($request->tel) {
+	            $data['tel'] = $request->tel;
+	        }
+	        if ($request->department) {
+	            $data['department'] = $request->department;
+	        }
+	        if ($request->position) {
+	            $data['position'] = $request->position;
+	        }	        	        	       	     
+	        //判断用户的密码是否需要更新
+	        if ($request->password) {
+	            $data['password'] = bcrypt($request->password);
+	        }
+	        $user->update($data);
+			session()->flash('success','特权更新成功！');
+			return back();
+		}
 	}
 
 	public function store(Request $request)
 	{
 		$this->validate($request,[
-			'name' => 'required|max:50',
+			'name' => 'required|unique:users|max:50',
 			'email' => 'required|email|unique:users|max:255',
 			'password' => 'required|confirmed|min:6'			
 		]);

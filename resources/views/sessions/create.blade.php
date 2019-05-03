@@ -58,17 +58,17 @@
 
             <div class="form-group row">
               <label for="exampleCheck1" class="col-md-4"></label>
-            <div class="col-md-6">
-              <input type="checkbox" class="form-check-input" name="remember" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">记住我</label>
+              <div class="col-md-2">
+                <input type="checkbox" class="form-check-input" name="remember" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">记住我</label>
+              </div>
             </div>
-          </div>
 
             <div class="form-group row mb-0">
               <div class="col-md-6 offset-md-3">
                 <button type="submit" class="btn btn-primary btn-block">
                   {{ __('Login') }}
-                </button>
+                </button>            
               </div>
             </div>
           </form>

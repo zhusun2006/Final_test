@@ -10,20 +10,13 @@ use Auth;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use Notifiable;
-    use MustVerifyEmailTrait;
-
-    use Notifiable {
-        notify as protected laravelNotify;
-    }
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','position','department','tel','notification_count','arrangement','remember_thing'
+        'name', 'email', 'avatar','password','position','department','tel','notification_count','arrangement','remember_thing'
     ];
 
     /**
@@ -34,32 +27,16 @@ class User extends Authenticatable implements MustVerifyEmailContract
     protected $hidden = [
         'password', 'remember_token',
     ];
-	
-	
-    public function notify($instance)
-    {
-        // 如果要通知的人是当前用户，就不必通知了！
-        if ($this->id == Auth::id()) {
-            return;
-        }
 
-        // 只有数据库类型通知才需提醒，直接发送 Email 或者其他的都 Pass
-        if (method_exists($instance, 'toDatabase')) {
-            $this->increment('notification_count');
-        }
-
-        $this->laravelNotify($instance);
-    }
+    protected $attributes = [
+        'position' => '游客',
+        'department' => '来访者',
+        'avatar' => 'http://www.gravatar.com/avatar/$hash3s=$size',
+    ];
 
     public function replies()
     {
         return $this->hasMany(Reply::class);
-    }
-
-    public function gravatar($size = '100')
-    {
-        $hash = md5(strtolower(trim($this->attributes['email'])));
-        return "http://www.gravatar.com/avatar/$hash?s=$size";
     }
 
 }

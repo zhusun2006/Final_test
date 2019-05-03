@@ -63,8 +63,8 @@ class RepliesController extends Controller
             if($user_access == 1)
             {
                 //将申请或者回复的记录保存至数据库
-                try
-                {
+                // try
+                // {
                     $reply->content = $request->content;
                     $reply->title = $request->title;
                     $reply->user_id = $user_id;
@@ -75,11 +75,11 @@ class RepliesController extends Controller
                     $reply->admin_reply = $request->adminreply;
                     $reply->save();
                     Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path));
-                }catch (\Illuminate\Database\QueryException $ex) 
-                {  
-                    session()->flash('warning','申请的标题已经存在，请换一个！');
-                    return view('users.apply', compact('user')); 
-                }  
+                // }catch (\Illuminate\Database\QueryException $ex) 
+                // {  
+                //     session()->flash('warning','申请的标题已经存在，请换一个！');
+                //     return view('users.apply', compact('user')); 
+                // }  
                 //获取保存记录的id
                 $reply_id = Reply::where(['user_id' => $user_id, 'title' => $request->title, 'content' => $request->content])->value('id');
                 //将申请或者回复提交至消息通知中
@@ -94,8 +94,8 @@ class RepliesController extends Controller
                     'datetime' => $today
                 ]);
                 //用户的消息记录+1
-                $count = User::where('id', $id)->value('notification_count')+1;
-                $update = User::find($id);
+                $count = User::where('id', $user_id)->value('notification_count')+1;
+                $update = User::find($user_id);
                 $update->notification_count = $count;
                 $update->save();
                 //返回提交消息

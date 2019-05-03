@@ -1,17 +1,17 @@
 @extends('layouts.default')
-@section('title', '注册')
+@section('title', '测试注册')
 
 @section('content')
 <div class="col-md-offset-2 col-md-8">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h5>注册</h5>
+      <h5>测试注册</h5>
     </div>
     <div class="panel-body">
 	
       <form method="POST" action="{{ route('users.store') }}">
-		{{ csrf_field() }}
-		@include('shared._errors')
+      		{{ csrf_field() }}
+      		@include('shared._errors')
           <div class="form-group">
             <label for="name">名称：</label>
             <input type="text" name="name" class="form-control" value="{{ old('name') }}">

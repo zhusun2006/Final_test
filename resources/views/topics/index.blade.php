@@ -4,8 +4,6 @@
 
 @section('content')
 
-      <!-- Left Side Of Navbar -->
-      @include('shared._messages')
     <nav class="navbar navbar-expand-sm bg-light">
       <ul class="navbar-nav">
         <li class="nav-item {{ active_class(if_route('topics.index')) }}"><a class="nav-link" href="{{ route('topics.index') }}">首页</a></li>
