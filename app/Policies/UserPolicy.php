@@ -24,6 +24,11 @@ class UserPolicy
 		return $currentUser->id === $user->id;
 	}
 
+	public function admin(User $currentUser, User $user)
+	{
+		return $currentUser->id === $user->id && $currentUser->is_admin;
+	}
+
 	// 只有管理员可以删除用户
 	public function destroy(User $currentUser, User $user)
 	{

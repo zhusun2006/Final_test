@@ -58,28 +58,39 @@ class RepliesController extends Controller
             $user_access = User::where('id', Auth::id())->value('is_admin');
             $user_department = User::where('id', Auth::id())->value('department');
 
-            // var_dump($user_department);
-            //如果权限是管理员级别的用户，则允许给任何人发回复
+            //如果权限是管理员级别的用户，则只能给同为管理员的人发送申请
             if($user_access == 1)
             {
+                $tag = User::where('id', $user_id)->value('is_admin');
+                if($tag == 0)
+                {
+                    session()->flash('warning','管理员只允许将申请提交给其他管理员或者部门管理！');
+                    return view('users.apply', compact('user'));
+                }
                 //将申请或者回复的记录保存至数据库
-                // try
-                // {
+                try
+                {
                     $reply->content = $request->content;
                     $reply->title = $request->title;
                     $reply->user_id = $user_id;
                     $reply->sender_id = $sender_name;
                     $reply->kind = $request->category_id;
-                    $reply->filename = $filename;
-                    $reply->route = 'uploads/'.$today.'/'.$filename;
+                    if($file != null)
+                    {
+                        $reply->filename = $filename;
+                        $reply->route = 'uploads/'.$today.'/'.$filename;
+                    }
                     $reply->admin_reply = $request->adminreply;
                     $reply->save();
-                    Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path));
-                // }catch (\Illuminate\Database\QueryException $ex) 
-                // {  
-                //     session()->flash('warning','申请的标题已经存在，请换一个！');
-                //     return view('users.apply', compact('user')); 
-                // }  
+                    if($file != null)
+                    {
+                        Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path));
+                    }
+                }catch (\Illuminate\Database\QueryException $ex) 
+                {  
+                    session()->flash('warning','申请失败，发生未知错误，请重试！');
+                    return view('users.apply', compact('user')); 
+                }  
                 //获取保存记录的id
                 $reply_id = Reply::where(['user_id' => $user_id, 'title' => $request->title, 'content' => $request->content])->value('id');
                 //将申请或者回复提交至消息通知中
@@ -108,18 +119,16 @@ class RepliesController extends Controller
                 $tag = User::where('id', $user_id)->value('is_admin');
                 if($tag == 0)
                 {
-                    session()->flash('warning','只允许将申请提交给管理员或者部门管理！');
+                    session()->flash('warning','用户只允许将申请提交给管理员或者部门管理！');
                     return view('users.apply', compact('user'));
                 }
                 else
                 {
                     $tag_department = User::where('id', $user_id)->value('department');
-                    // var_dump($tag_department);
-                    // var_dump($user_department);
-                    // exit;
+
                     if($tag_department != $user_department)
                     {
-                        session()->flash('warning','只允许将申请提交给本部门管理员或部门管理！');
+                        session()->flash('warning','用户只允许将申请提交给本部门管理员或部门管理！');
                         return view('users.apply', compact('user'));
                     }
                     else
@@ -131,14 +140,20 @@ class RepliesController extends Controller
                             $reply->user_id = $user_id;
                             $reply->sender_id = $sender_name;
                             $reply->kind = $request->category_id;
-                            $reply->filename = $filename;
-                            $reply->route = 'uploads/'.$today.'/'.$filename;
+                            if($file != null)
+                            {
+                                $reply->filename = $filename;
+                                $reply->route = 'uploads/'.$today.'/'.$filename;
+                            }
                             $reply->admin_reply = $request->adminreply;
                             $reply->save();
-                            Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path));
+                            if($file != null)
+                            {
+                                Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path));
+                            }
                         }catch (\Illuminate\Database\QueryException $ex) 
                         {  
-                            session()->flash('warning','申请的标题已经存在，请换一个！');
+                            session()->flash('warning','申请失败，发生未知错误，请重试！');
                             return view('users.apply', compact('user')); 
                         }  
                         //获取保存记录的id
@@ -167,10 +182,10 @@ class RepliesController extends Controller
             }
         }
         //如果是回复申请
-        else
+        if($is_check == 1)
         {
             if($user_id == Auth::id()){
-                session()->flash('danger','不允许将申请发送给自身！');
+                session()->flash('danger','不允许将回复发送给自身！');
                 return view('users.apply', compact('user'));
             }
 
@@ -203,11 +218,96 @@ class RepliesController extends Controller
                 $update->save();
                 //返回提交消息
                 $fallback = route('users.show', Auth::user());
-                return redirect()->intended($fallback)->with('success', '发送成功，现转至个人主页面！');;
+                return redirect()->intended($fallback)->with('success', '回复成功，现转至个人主页面！');;
             }
             //如果权限是普通用户，则阻拦。
-            if($user_access == 0 ){
-                return false;
+            if($user_access == 0 )
+            {
+                return back();
+            }
+        }
+        //特权通告
+        if($is_check == 99)
+        {
+            $dir = public_path().'/uploads/'.$today;
+            if(!is_dir($dir))
+            {
+                mkdir($dir);
+            }
+            if($file != null)
+            {
+                if($file->isValid())          
+                {
+                    //获取文件的扩展名 
+                    $ext = $file->getClientOriginalExtension();
+                    //获取文件缓存的绝对路径
+                    $path = $file->getRealPath();
+                    //定义文件名
+                    $filename = date('Y-m-d-h-i-s').'.'.$ext;
+                }
+            }
+
+            if($user_id == Auth::id())
+            {
+                session()->flash('danger','不允许将通告发送给自身！');
+                return view('users.apply', compact('user'));
+            }
+
+            $user_access = User::where('id', Auth::id())->value('is_admin');
+            $user_department = User::where('id', Auth::id())->value('department');
+
+            //如果权限是管理员级别的用户，则允许给任何人发回复
+            if($user_access == 1)
+            {
+                //将申请或者回复的记录保存至数据库
+                try
+                {
+                    $reply->content = $request->content;
+                    $reply->title = $request->title;
+                    $reply->user_id = $user_id;
+                    $reply->sender_id = $sender_name;
+                    $reply->kind = $request->category_id;
+                    if($file != null)
+                    {
+                        $reply->filename = $filename;
+                        $reply->route = 'uploads/'.$today.'/'.$filename;
+                    }
+                    $reply->admin_reply = $request->adminreply;
+                    $reply->save();
+                    if($file != null)
+                    {
+                        Storage::disk('upload')->put($today.'/'.$filename, file_get_contents($path));
+                    }
+                }catch (\Illuminate\Database\QueryException $ex) 
+                {  
+                    session()->flash('warning','发送失败，发生未知错误，请重试！');
+                    return view('users.apply', compact('user')); 
+                }  
+                //获取保存记录的id
+                $reply_id = Reply::where(['user_id' => $user_id, 'title' => $request->title, 'content' => $request->content])->value('id');
+                //将申请或者回复提交至消息通知中
+                $notice = Notification::create([
+                    'reply_id' => $reply_id,
+                    'sender' => $sender_name,
+                    'achiever' => $user_id,
+                    'title' => $request->title,
+                    'content' => $request->content,
+                    'kind' => $request->category_id,
+                    'admin_reply' => $request->adminreply,
+                    'datetime' => $today
+                ]);
+                //用户的消息记录+1
+                $count = User::where('id', $user_id)->value('notification_count')+1;
+                $update = User::find($user_id);
+                $update->notification_count = $count;
+                $update->save();
+                //返回提交消息
+                $fallback = route('users.show', Auth::user());
+                return redirect()->intended($fallback)->with('success', '发送成功，现转至个人主页面！');;
+            }
+            else
+            {
+                return back();
             }
         }
 	}

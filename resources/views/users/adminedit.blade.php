@@ -1,11 +1,11 @@
 @extends('layouts.default')
-@section('title','特权更新个人资料')
+@section('title','特权更新资料')
 
 @section('content')
 <div class="offset-md-2 col-md-8">
   <div class="card ">
     <div class="card-header">
-      <h5>特权更新个人资料</h5>
+      <h5>特权更新资料</h5>
       <a class="btn btn-link float-left mt-1" href="{{ route('users.index', Auth::user()) }}"><-返回</a>
     </div>
 

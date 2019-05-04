@@ -27,6 +27,12 @@ class UsersController extends Controller
     	$this->authorize('update', $user);
         return view('users.apply', compact('user'));
     }
+
+    public function inform(User $user)
+    {
+    	$this->authorize('admin', $user);
+        return view('users.adminnotice', compact('user'));
+    }
 	
 	public function edit(User $user)
 	{

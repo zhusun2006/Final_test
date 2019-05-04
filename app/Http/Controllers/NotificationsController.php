@@ -63,4 +63,17 @@ class NotificationsController extends Controller
         //这里是审核结果页面
         return view('replies.result', compact('reply'));
     }
+
+    public function adminnotice(Request $request)
+    {
+        //通过消息获取回复的Id
+        //获取数组下标，传入的值迷之变成下标，所以这么解决了
+        $notice = array_keys($request->all());
+        $notice_id = $notice[0];
+        $reply_id = Notification::where('id', $notice_id)->value('reply_id');
+
+        $reply = Reply::where('id' , $reply_id)->get();
+        //这里是审核结果页面
+        return view('replies.noticeresult', compact('reply'));
+    }
 }

@@ -34,8 +34,12 @@
               </div>
 
               <div class="form-group">
-                <label for="name">附件下载：{{ $reply[0]->filename }}</label>
-                <a href="{{ route('download', $reply[0]->route) }}">下载</a>
+                @if( $reply[0]->filename == null)
+                  <label for="name">附件：没有可下载的附件</label>
+                @else
+                  <label for="name">附件下载：{{ $reply[0]->filename }}</label>
+                  <a href="{{ route('download', $reply[0]->route) }}">下载</a>
+                @endif
               </div>
 
               <div class="well well-sm">

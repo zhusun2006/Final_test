@@ -22,7 +22,7 @@ class UploadController extends Controller
             return response()->download(public_path($rel_file), $name ,$headers = ['Content-Type'=>'application/zip;charset=utf-8']);	
         }
         else{
-            session()->flash('warning','文件已经过期！');
+            session()->flash('warning','文件不存在或文件已经过期！');
             return back();
         }
 

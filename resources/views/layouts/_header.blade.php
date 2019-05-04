@@ -22,6 +22,10 @@
             <a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">编辑资料</a>
       			<a class="dropdown-item" href="{{ route('apply', Auth::user()) }}">申请审核</a>
       			<a class="dropdown-item" href="{{ route('thread', Auth::user()) }}">审核进度</a>
+            @if(Auth::user()->is_admin == 1)
+              <a class="dropdown-item" href="{{ route('inform', Auth::user()) }}">特权通告</a>
+            @else
+            @endif
             <div class="dropdown-divider"></div>
               <a class="dropdown-item" id="logout" href="#">
                 <form action="{{ route('logout') }}" method="POST">
