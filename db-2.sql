@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : localhost
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : db
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-05-04 11:49:56
+Date: 2019-05-04 13:30:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -306,14 +306,27 @@ CREATE TABLE `topics` (
   KEY `topics_user_id_index` (`user_id`),
   KEY `topics_category_id_index` (`category_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of topics
 -- ----------------------------
+INSERT INTO `topics` VALUES ('1', 'Fugiat deserunt vel fugiat animi consequatur.', 'Explicabo doloremque ipsum repellendus culpa voluptatem quo explicabo. Dolores corporis sunt animi consequatur ullam nesciunt. Sit numquam maxime fugit quis sit.', '2', '1', '0', '0', 'Fugiat deserunt vel fugiat animi consequatur.', '', '2019-03-20 02:52:28', '2019-04-02 06:02:59');
 INSERT INTO `topics` VALUES ('2', 'Fugiat deserunt vel fugiat animi consequatur.', 'Explicabo doloremque ipsum repellendus culpa voluptatem quo explicabo. Dolores corporis sunt animi consequatur ullam nesciunt. Sit numquam maxime fugit quis sit.', '2', '1', '0', '0', 'Fugiat deserunt vel fugiat animi consequatur.', '', '2019-03-20 02:52:28', '2019-04-02 06:02:59');
 INSERT INTO `topics` VALUES ('4', 'Quas maiores nisi voluptas sed ipsum enim quisquam.', 'Itaque quasi aut et reprehenderit. Dolorum excepturi velit quia ut labore.', '4', '3', '0', '0', 'Quas maiores nisi voluptas sed ipsum enim quisquam.', '', '2019-03-12 08:31:56', '2019-03-14 03:06:13');
 INSERT INTO `topics` VALUES ('5', 'Maiores sed quia omnis ab officiis.', 'At et in quia voluptates sed. Quae maiores ipsum eligendi delectus. Veritatis laborum quae sunt dignissimos facere cupiditate odio dolor.', '5', '3', '0', '0', 'Maiores sed quia omnis ab officiis.', '', '2019-03-17 19:13:56', '2019-03-23 10:50:50');
+INSERT INTO `topics` VALUES ('6', 'Fugiat deserunt vel fugiat animi consequatur.', 'Explicabo doloremque ipsum repellendus culpa voluptatem quo explicabo. Dolores corporis sunt animi consequatur ullam nesciunt. Sit numquam maxime fugit quis sit.', '2', '1', '0', '0', 'Fugiat deserunt vel fugiat animi consequatur.', '', '2019-03-20 02:52:28', '2019-04-02 06:02:59');
+INSERT INTO `topics` VALUES ('7', 'Quas maiores nisi voluptas sed ipsum enim quisquam.', 'Itaque quasi aut et reprehenderit. Dolorum excepturi velit quia ut labore.', '4', '3', '0', '0', 'Quas maiores nisi voluptas sed ipsum enim quisquam.', '', '2019-03-12 08:31:56', '2019-03-14 03:06:13');
+INSERT INTO `topics` VALUES ('8', 'Maiores sed quia omnis ab officiis.', 'At et in quia voluptates sed. Quae maiores ipsum eligendi delectus. Veritatis laborum quae sunt dignissimos facere cupiditate odio dolor.', '5', '3', '0', '0', 'Maiores sed quia omnis ab officiis.', '', '2019-03-17 19:13:56', '2019-03-23 10:50:50');
+INSERT INTO `topics` VALUES ('9', 'Fugiat deserunt vel fugiat animi consequatur.', 'Explicabo doloremque ipsum repellendus culpa voluptatem quo explicabo. Dolores corporis sunt animi consequatur ullam nesciunt. Sit numquam maxime fugit quis sit.', '2', '1', '0', '0', 'Fugiat deserunt vel fugiat animi consequatur.', '', '2019-03-20 02:52:28', '2019-04-02 06:02:59');
+INSERT INTO `topics` VALUES ('10', 'Fugiat deserunt vel fugiat animi consequatur.', 'Explicabo doloremque ipsum repellendus culpa voluptatem quo explicabo. Dolores corporis sunt animi consequatur ullam nesciunt. Sit numquam maxime fugit quis sit.', '2', '1', '0', '0', 'Fugiat deserunt vel fugiat animi consequatur.', '', '2019-03-20 02:52:28', '2019-04-02 06:02:59');
+INSERT INTO `topics` VALUES ('11', 'Quas maiores nisi voluptas sed ipsum enim quisquam.', 'Itaque quasi aut et reprehenderit. Dolorum excepturi velit quia ut labore.', '4', '3', '0', '0', 'Quas maiores nisi voluptas sed ipsum enim quisquam.', '', '2019-03-12 08:31:56', '2019-03-14 03:06:13');
+INSERT INTO `topics` VALUES ('12', 'Maiores sed quia omnis ab officiis.', 'At et in quia voluptates sed. Quae maiores ipsum eligendi delectus. Veritatis laborum quae sunt dignissimos facere cupiditate odio dolor.', '5', '3', '0', '0', 'Maiores sed quia omnis ab officiis.', '', '2019-03-17 19:13:56', '2019-03-23 10:50:50');
+INSERT INTO `topics` VALUES ('13', 'Fugiat deserunt vel fugiat animi consequatur.', 'Explicabo doloremque ipsum repellendus culpa voluptatem quo explicabo. Dolores corporis sunt animi consequatur ullam nesciunt. Sit numquam maxime fugit quis sit.', '2', '1', '0', '0', 'Fugiat deserunt vel fugiat animi consequatur.', '', '2019-03-20 02:52:28', '2019-04-02 06:02:59');
+INSERT INTO `topics` VALUES ('14', 'Fugiat deserunt vel fugiat animi consequatur.', 'Explicabo doloremque ipsum repellendus culpa voluptatem quo explicabo. Dolores corporis sunt animi consequatur ullam nesciunt. Sit numquam maxime fugit quis sit.', '2', '1', '0', '0', 'Fugiat deserunt vel fugiat animi consequatur.', '', '2019-03-20 02:52:28', '2019-04-02 06:02:59');
+INSERT INTO `topics` VALUES ('15', 'Quas maiores nisi voluptas sed ipsum enim quisquam.', 'Itaque quasi aut et reprehenderit. Dolorum excepturi velit quia ut labore.', '4', '3', '0', '0', 'Quas maiores nisi voluptas sed ipsum enim quisquam.', '', '2019-03-12 08:31:56', '2019-03-14 03:06:13');
+INSERT INTO `topics` VALUES ('16', 'Maiores sed quia omnis ab officiis.', 'At et in quia voluptates sed. Quae maiores ipsum eligendi delectus. Veritatis laborum quae sunt dignissimos facere cupiditate odio dolor.', '5', '3', '0', '0', 'Maiores sed quia omnis ab officiis.', '', '2019-03-17 19:13:56', '2019-03-23 10:50:50');
+INSERT INTO `topics` VALUES ('17', 'Fugiat deserunt vel fugiat animi consequatur.', 'Explicabo doloremque ipsum repellendus culpa voluptatem quo explicabo. Dolores corporis sunt animi consequatur ullam nesciunt. Sit numquam maxime fugit quis sit.', '2', '1', '0', '0', 'Fugiat deserunt vel fugiat animi consequatur.', '', '2019-03-20 02:52:28', '2019-04-02 06:02:59');
 
 -- ----------------------------
 -- Table structure for uploads
@@ -364,7 +377,7 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('1', '376300797@qq.com', '376300797@qq.com', '', '$2y$10$/45V8qniHDbOF/xvP6sqQev1ByNyr3cCOh2AIDV2GYSPIjdbmXGdG', 'aXLdStDo22aDkZ4LZlrc3Thi24kslgsYm5QiMDDv17lVGu3QfnWACDRdQKOI', '', 'YhPuyzxwDiHCEJgHF1kdivAXaIYtxXTe25fdiTEeeDQREu09SVzBe0PRXaKS', '1', 'Human Resources Director', 'Human Resources', '18015413296', '0', '2019-03-27 15:37:17', '2019-04-27 15:37:17');
-INSERT INTO `users` VALUES ('2', '111111111@qq.com', '111111111@qq.com', '', '$2y$10$2YkexCJEuJGDKzEFKx.onOjNlSeSq6sJAg18bB9jvQ9WAtvCZmN/q', '32', '', 'DIdo33EdZqrlC4sOZGdaGDsLOx6A0QUJB71O3FN2sjXPPtovQG4vApM1J4Zh', '0', '034', 'this', '3434', '0', '0000-00-00 00:00:00', '2019-05-04 11:22:32');
+INSERT INTO `users` VALUES ('2', '111111111@qq.com', '111111111@qq.com', '', '$2y$10$2YkexCJEuJGDKzEFKx.onOjNlSeSq6sJAg18bB9jvQ9WAtvCZmN/q', '32', '', 'OUdRNYIJdnJ66T0oxsASMCVL46xY227Ycz6Fovzwfuwb6m2MPGqEmD2FnGMP', '0', '034', 'this', '3434', '0', '0000-00-00 00:00:00', '2019-05-04 11:22:32');
 INSERT INTO `users` VALUES ('3', '111', '12345678@qq.com', '', '$2y$10$2YkexCJEuJGDKzEFKx.onOjNlSeSq6sJAg18bB9jvQ9WAtvCZmN/q', '8uVJwq0oDu1Dwo1h6f3katx8X1B2dtaDMb4jKTav2UrgOg6oPxZ8XrtlWJrC', '', '56nkB0rut2oSpZOuHObDCZelJY0pP4uWnQbtdiBr5mdlbaL6BqyHNw5qSZ7Y', '1', '0', 'Human Resources', '0', '0', '2019-04-14 16:39:09', '2019-05-04 10:22:38');
 INSERT INTO `users` VALUES ('4', 'Mr. Kenny Dickinson Jr.', 'marie31@example.org', '', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'ixfBHu70Gv', '', '', '0', 'officer', 'Quidem eveniet rerum suscipit hic praesentium aspernatur sunt.', 'omJgrxdSISVA', '0', '2017-01-11 09:10:14', '2017-01-11 09:10:14');
 INSERT INTO `users` VALUES ('5', 'Roselyn Corkery', 'ojones@example.org', '', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'HS83PnoUDQ', '', '', '0', 'officer', 'Consequuntur quidem est velit nostrum qui magnam.', 'YMJIUgtaGhm6', '0', '1990-03-13 00:25:30', '1990-03-13 00:25:30');
