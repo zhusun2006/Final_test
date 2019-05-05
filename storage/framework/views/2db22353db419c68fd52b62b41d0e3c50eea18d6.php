@@ -5,7 +5,7 @@
 
   <div class="col-lg-3 col-md-3 hidden-sm hidden-xs user-info">
     <div class="card ">
-      <img class="card-img-top" src="https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/600/h/600" alt="<?php echo e($user->name, false); ?>">
+      <img class="card-img-top" src="<?php echo e($user->avatar, false); ?>" alt="<?php echo e($user->name, false); ?>">
       <div class="card-body">
             <h5><strong>用户名：</strong></h5>
             <p><?php echo e($user->name, false); ?></p>
@@ -27,25 +27,28 @@
       <div class="card-body">
           <h1 class="mb-0" style="font-size:22px;">个人备忘录</h1>
           <br/>
-      	<div class="mb-1" id="arrange-one" style="display: block;">
+      	<div class="mb-1" id="remember-one" style="display: block;">
       		<?php if($user->remember_thing == null): ?>
-      		暂无数据 ~_~
+      		<div class="form-group">
+              <textarea name="remember_thing" class="form-control" id="editor" rows="5" disabled>暂无数据~_~</textarea>
+          </div>  
       		<?php else: ?>
-      		<?php echo e($user->remember_thing, false); ?>
-
+          <div class="form-group">
+              <textarea name="remember_thing" class="form-control" id="editor" rows="5" disabled><?php echo e($user->remember_thing, false); ?></textarea>
+          </div> 
       		<?php endif; ?>
       	</div>
-      	<form method="POST" id="arrange-two" action="<?php echo e(route('users.update', $user->id ), false); ?>" style="display: none;">
+      	<form method="POST" id="remember-two" action="<?php echo e(route('users.update', $user->id ), false); ?>" style="display: none;">
       		<?php echo e(method_field('PATCH'), false); ?>
 
       		<input type="hidden" name="_token" value="<?php echo e(csrf_token(), false); ?>">
 	        <input type="hidden" name="is_check" value="3"/>
 	        <div class="form-group">
-                <textarea name="remember_thing" class="form-control" id="editor" rows="15" placeholder="请填入内容"><?php echo e($user->remember_thing, false); ?></textarea>
-            </div>	    
+              <textarea name="remember_thing" class="form-control" id="editor" rows="5" placeholder="请填入内容"><?php echo e($user->remember_thing, false); ?></textarea>
+          </div>	    
         	<button type="submit" class="btn btn-primary">更新</button>
         </form>
-        	<button id="btn" class="btn btn-primary" onclick="setarrange()">设置</button>
+        	<button id="btn-remember" class="btn btn-primary" onclick="setremember()">设置</button>
       </div>
     </div>
     <hr>
@@ -57,10 +60,13 @@
       	<br/>
       	<div class="mb-1" id="arrange-one" style="display: block;">
       		<?php if($user->arrangement == null): ?>
-      		暂无数据 ~_~
+          <div class="form-group">
+              <textarea name="content_arr" class="form-control" id="editor" rows="15" disabled>暂无数据 ~_~</textarea>
+          </div>
       		<?php else: ?>
-      		<?php echo e($user->arrangement, false); ?>
-
+          <div class="form-group">
+              <textarea name="content_arr" class="form-control" id="editor" rows="15" disabled><?php echo e($user->arrangement, false); ?></textarea>
+          </div>
       		<?php endif; ?>
       	</div>
       	<form method="POST" id="arrange-two" action="<?php echo e(route('users.update', $user->id ), false); ?>" style="display: none;">
@@ -69,11 +75,11 @@
       		<input type="hidden" name="_token" value="<?php echo e(csrf_token(), false); ?>">
 	        <input type="hidden" name="is_check" value="2"/>
 	        <div class="form-group">
-                <textarea name="content_arr" class="form-control" id="editor" rows="15" placeholder="请填入内容"><?php echo e($user->arrangement, false); ?></textarea>
-            </div>	    
+              <textarea name="content_arr" class="form-control" id="editor" rows="15" placeholder="请填入内容"><?php echo e($user->arrangement, false); ?></textarea>
+          </div>	    
         	<button type="submit" class="btn btn-primary">更新</button>
         </form>
-        	<button id="btn" class="btn btn-primary" onclick="setarrange()">设置</button>
+        	<button id="btn-arrange" class="btn btn-primary" onclick="setarrange()">设置</button>
       </div>
     </div>
 
@@ -84,9 +90,18 @@
 	function setarrange(){
 			var arr_one = document.getElementById("arrange-one");
 			var arr_two = document.getElementById("arrange-two");
-			var btn = document.getElementById("btn");
+			var btn = document.getElementById("btn-arrange");
 			arr_one.style.display = "none";
 			arr_two.style.display = "block";
+			btn.style.display = "none";
+	}
+
+	function setremember(){
+			var rem_one = document.getElementById("remember-one");
+			var rem_two = document.getElementById("remember-two");
+			var btn = document.getElementById("btn-remember");
+			rem_one.style.display = "none";
+			rem_two.style.display = "block";
 			btn.style.display = "none";
 	}
 	

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container ">
+  <div class="container">
     <div>
     <a class="navbar-brand" href="{{ route('home') }}">办公OA系统</a>
     <a class="navbar-brand" href="{{ route('topics.index') }}">查看公告</a>

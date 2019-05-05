@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container ">
+  <div class="container">
     <div>
     <a class="navbar-brand" href="<?php echo e(route('home'), false); ?>">办公OA系统</a>
     <a class="navbar-brand" href="<?php echo e(route('topics.index'), false); ?>">查看公告</a>
@@ -13,7 +13,7 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-        <li class="nav-item"><a class="nav-link" href="<?php echo e(route('users.index'), false); ?>">用户列表</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?php echo e(route('users.index', Auth::user()), false); ?>">用户列表</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php echo e(Auth::user()->name, false); ?>
@@ -24,6 +24,10 @@
             <a class="dropdown-item" href="<?php echo e(route('users.edit', Auth::user()), false); ?>">编辑资料</a>
       			<a class="dropdown-item" href="<?php echo e(route('apply', Auth::user()), false); ?>">申请审核</a>
       			<a class="dropdown-item" href="<?php echo e(route('thread', Auth::user()), false); ?>">审核进度</a>
+            <?php if(Auth::user()->is_admin == 1): ?>
+              <a class="dropdown-item" href="<?php echo e(route('inform', Auth::user()), false); ?>">特权通告</a>
+            <?php else: ?>
+            <?php endif; ?>
             <div class="dropdown-divider"></div>
               <a class="dropdown-item" id="logout" href="#">
                 <form action="<?php echo e(route('logout'), false); ?>" method="POST">

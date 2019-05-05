@@ -7,15 +7,15 @@
   </head>
   <body>
     <?php echo $__env->make('layouts._header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
+    <div class="main">
     <div class="container">
       <div class="offset-md-1 col-md-10">
 	      <?php echo $__env->make('shared._messages', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <?php echo $__env->yieldContent('content'); ?>
       </div>
 	  </div>
-    
-  <?php echo $__env->make('layouts._footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+    <?php echo $__env->make('layouts._footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   <script src="<?php echo e(mix('js/app.js'), false); ?>"></script>
   
   </body>

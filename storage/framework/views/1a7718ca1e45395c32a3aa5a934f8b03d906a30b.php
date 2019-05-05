@@ -2,8 +2,6 @@
 
 <?php $__env->startSection('content'); ?>
 
-      <!-- Left Side Of Navbar -->
-      <?php echo $__env->make('shared._messages', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <nav class="navbar navbar-expand-sm bg-light">
       <ul class="navbar-nav">
         <li class="nav-item <?php echo e(active_class(if_route('topics.index')), false); ?>"><a class="nav-link" href="<?php echo e(route('topics.index'), false); ?>">首页</a></li>

@@ -17437,12 +17437,6 @@ section.user_info h1 {
   margin-top: 15px;
 }
 
-.gravatar {
-  float: left;
-  max-width: 50px;
-  border-radius: 50%;
-}
-
 /* footer */
 
 html {
@@ -17533,5 +17527,9 @@ body {
 
 .notification-badge .badge-hint {
   background-color: #d15b47 !important;
+}
+
+.main {
+  margin-bottom: 80px;
 }
 

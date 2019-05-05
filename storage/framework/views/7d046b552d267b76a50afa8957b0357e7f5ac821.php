@@ -10,16 +10,26 @@
 
         <?php echo $__env->make('shared._errors', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-        <form method="POST" action="<?php echo e(route('users.update', $user->id ), false); ?>">
+        <form method="POST" action="<?php echo e(route('users.update', $user->id ), false); ?>" accept-charset="UTF-8" enctype="multipart/form-data">
             <input type="hidden" name="is_check" value="1"/>
             <?php echo e(method_field('PATCH'), false); ?>
 
             <?php echo e(csrf_field(), false); ?>
 
 
+            <div class="form-group mb-4">
+              <label for="" class="avatar-label">用户头像</label>
+              <input type="file" name="avatar" class="form-control-file">
+
+              <?php if($user->avatar): ?>
+                <br>
+                <img class="thumbnail img-responsive" src="<?php echo e($user->avatar, false); ?>" width="200" />
+              <?php endif; ?>
+            </div>
+
             <div class="form-group">
               <label for="name">用户名：</label>
-              <input type="text" name="name" class="form-control" value="<?php echo e($user->name, false); ?>">
+              <input type="text" name="name" class="form-control" value="<?php echo e($user->name, false); ?>" disabled>
             </div>
 
             <div class="form-group">

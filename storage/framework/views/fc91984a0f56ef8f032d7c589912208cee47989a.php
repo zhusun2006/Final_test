@@ -28,11 +28,11 @@
             </a>
 
             <span> • </span>
-            <a class="text-secondary" href="<?php echo e(route('users.show', [$topic->user_id]), false); ?>" title="<?php echo e($topic->user->name, false); ?>">
+            <span class="text-secondary"  title="<?php echo e($topic->user->name, false); ?>">
               <i class="far fa-user"></i>
               <?php echo e($topic->user->name, false); ?>
 
-            </a>
+            </span>
      
             <span> • </span>
             <i class="far fa-clock"></i>

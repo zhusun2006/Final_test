@@ -21,21 +21,13 @@
 <body>
 
   <?php echo $__env->make('layouts._header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-  <div class="container">
-    <?php if(session('message')): ?>
-    <div class="alert alert-success alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <?php echo e(@session('message'), false); ?>
-
+  <div class="main">
+    <div class="container">
+      <?php echo $__env->make('shared._messages', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      <?php echo $__env->yieldContent('content'); ?>
     </div>
-    <?php endif; ?>
-
-    <?php echo $__env->yieldContent('header'); ?>
-    <?php echo $__env->yieldContent('content'); ?>
   </div>
+  <?php echo $__env->make('layouts._footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
   <!-- Scripts -->
 

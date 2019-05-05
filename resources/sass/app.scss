@@ -37,12 +37,6 @@ section.user_info {
   }
 }
 
-.gravatar {
-  float: left;
-  max-width: 50px;
-  border-radius: 50%;
-}
-
 /* footer */
 html {
   position: relative;
@@ -142,4 +136,8 @@ body {
   .badge-hint {
     background-color: #d15b47 !important;
   }
+}
+
+.main {
+  margin-bottom: 80px;
 }
