@@ -18,23 +18,31 @@
               <?php echo $__env->make('shared._errors', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
               <div class="form-group">
                 <label for="name">申请者：</label>
-                <input class="form-control" type="text" name="user_name" value="<?php echo e($reply[0]->sender_id, false); ?> " />
+                <input class="form-control" type="hidden" name="user_name" value="<?php echo e($reply[0]->sender_id, false); ?>" />
+                <input class="form-control" type="text" name="user_name" value="<?php echo e($reply[0]->sender_id, false); ?> " disabled/>
                 <br>
                 <label for="name">标题：</label>
-                <input class="form-control" type="text" name="title" value="<?php echo e($reply[0]->title, false); ?> " />
+                <input class="form-control" type="hidden" name="title" value="<?php echo e($reply[0]->title, false); ?>" />
+                <input class="form-control" type="text" name="title" value="<?php echo e($reply[0]->title, false); ?> " disabled/>
                 <br>
                 <label for="name">申请种类：</label>
-                <input class="form-control" type="text" name="category_id" value="<?php echo e($reply[0]->kind, false); ?> " />
+                <input class="form-control" type="hidden" name="category_id" value="<?php echo e($reply[0]->kind, false); ?>" />
+                <input class="form-control" type="text" name="category_id" value="<?php echo e($reply[0]->kind, false); ?> " disabled/>
               </div>
 
               <div class="form-group">
                 <label for="name">申请内容：</label>
-                <textarea name="content" class="form-control" id="editor" rows="6" required ><?php echo e($reply[0]->content, false); ?></textarea>
+                <textarea name="content" class="form-control" id="editor" rows="6" required  style="display: none;"><?php echo e($reply[0]->content, false); ?></textarea>
+                <textarea name="content" class="form-control" id="editor" rows="6" required disabled><?php echo e($reply[0]->content, false); ?></textarea>
               </div>
 
               <div class="form-group">
-                <label for="name">附件下载：<?php echo e($reply[0]->filename, false); ?></label>
-                <a href="<?php echo e(route('download', $reply[0]->route), false); ?>">下载</a>
+                <?php if( $reply[0]->filename == null): ?>
+                  <label for="name">附件：没有可下载的附件</label>
+                <?php else: ?>
+                  <label for="name">附件下载：<?php echo e($reply[0]->filename, false); ?></label>
+                  <a href="<?php echo e(route('download', $reply[0]->route), false); ?>">下载</a>
+                <?php endif; ?>
               </div>
 
               <div class="well well-sm">

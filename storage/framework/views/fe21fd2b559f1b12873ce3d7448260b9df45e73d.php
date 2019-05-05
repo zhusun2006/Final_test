@@ -5,7 +5,6 @@
  <div class="container">
     <div class="col-md-10 offset-md-1">
       <div class="card ">
-
         <div class="card-body">
           <h2 class="">
             <i class="far fa-edit"></i>
@@ -17,17 +16,17 @@
               <input type="hidden" name="is_check" value="0"/>
               <?php echo $__env->make('shared._errors', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
               <div class="form-group">           
-              	<input class="form-control" type="text" name="user_name" value="" placeholder="请输入提交者"/>
+              	<input class="form-control" type="text" name="user_name" value="" placeholder="请输入接收者"/>
               	<br>
-                <input class="form-control" type="text" name="title" value="" placeholder="请填入标题"/>
+                <input class="form-control" type="text" name="title" value="" placeholder="请填入申请标题"/>
               </div>
 
               <div class="form-group">
                 <select class="form-control" name="category_id" required>
                   <option value="" name="kind" hidden disabled selected>分类</option>
                   <option value="报销申请">报销申请</option>
-	              <option value="请假申请">请假申请</option>
-	              <option value="物资申请">物资申请</option>
+  	              <option value="请假申请">请假申请</option>
+  	              <option value="物资申请">物资申请</option>
                 </select>
               </div>
               
@@ -36,7 +35,7 @@
               </div>
       			  <div class="form-group">
       			    <label class="sr-only" for="inputfile">添加附件</label>
-      			    <input type="file" id="file" name="file" required>
+      			    <input type="file" id="file" name="file" >
       			  </div>
 
               <div class="well well-sm">

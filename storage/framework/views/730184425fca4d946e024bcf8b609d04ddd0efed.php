@@ -32,8 +32,12 @@
               </div>
 
               <div class="form-group">
-                <label for="name">附件下载：<?php echo e($reply[0]->filename, false); ?></label>
-                <a href="<?php echo e(route('download', $reply[0]->route), false); ?>">下载</a>
+                <?php if( $reply[0]->filename == null): ?>
+                  <label for="name">附件：没有可下载的附件</label>
+                <?php else: ?>
+                  <label for="name">附件下载：<?php echo e($reply[0]->filename, false); ?></label>
+                  <a href="<?php echo e(route('download', $reply[0]->route), false); ?>">下载</a>
+                <?php endif; ?>
               </div>
 
               <div class="well well-sm">

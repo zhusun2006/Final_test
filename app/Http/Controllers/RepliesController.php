@@ -88,7 +88,7 @@ class RepliesController extends Controller
                     }
                 }catch (\Illuminate\Database\QueryException $ex) 
                 {  
-                    session()->flash('warning','申请失败，发生未知错误，请重试！');
+                    session()->flash('warning','申请失败，你的标题或者内容不合法，请重试！');
                     return view('users.apply', compact('user')); 
                 }  
                 //获取保存记录的id
@@ -153,7 +153,7 @@ class RepliesController extends Controller
                             }
                         }catch (\Illuminate\Database\QueryException $ex) 
                         {  
-                            session()->flash('warning','申请失败，发生未知错误，请重试！');
+                            session()->flash('warning','申请失败，你的标题或者内容不合法，请重试！');
                             return view('users.apply', compact('user')); 
                         }  
                         //获取保存记录的id
@@ -211,11 +211,16 @@ class RepliesController extends Controller
                     'admin_reply' => $request->adminreply,
                     'datetime' => $today
                 ]);
+                //回复时删除原有的管理员消息提示
+                $notice_id = Notification::where('title', $request->title)->where('achiever', Auth::id())->value('id');
+                Notification::find($notice_id)->delete();
                 //用户的消息记录+1
                 $count = User::where('id', $user_id)->value('notification_count')+1;
                 $update = User::find($user_id);
                 $update->notification_count = $count;
                 $update->save();
+
+
                 //返回提交消息
                 $fallback = route('users.show', Auth::user());
                 return redirect()->intended($fallback)->with('success', '回复成功，现转至个人主页面！');;
@@ -259,7 +264,7 @@ class RepliesController extends Controller
             //如果权限是管理员级别的用户，则允许给任何人发回复
             if($user_access == 1)
             {
-                //将申请或者回复的记录保存至数据库
+                //将申请或者回复的记录保存至数据库             
                 try
                 {
                     $reply->content = $request->content;

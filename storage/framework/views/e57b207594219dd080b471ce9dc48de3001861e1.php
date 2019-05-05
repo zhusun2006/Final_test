@@ -13,12 +13,12 @@
 
       </span>
     </div>
-    <form action="<?php echo e(route('replies.destroy', $reply->id ), false); ?>" method="post" class="float-right">
+    <form action="<?php echo e(route('replies.destroy', $reply->id ), false); ?>" method="post" class="float-right" onsubmit="return confirm('您确定要执行撤销操作吗？');">
       <?php echo e(csrf_field(), false); ?>
 
       <?php echo e(method_field('DELETE'), false); ?>
 
-      <button type="submit" class="btn btn-sm btn-danger delete-btn" onsubmit="return confirm('您确定要执行撤销操作吗？');">>撤销</button>
+      <button type="submit" class="btn btn-sm btn-danger delete-btn" >撤销</button>
     </form>
     <div class="reply-content">
       类型：<?php echo $reply->kind; ?>

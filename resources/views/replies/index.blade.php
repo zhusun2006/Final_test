@@ -19,18 +19,22 @@
               @include('shared._errors')
               <div class="form-group">
                 <label for="name">申请者：</label>
-                <input class="form-control" type="text" name="user_name" value="{{ $reply[0]->sender_id }} " />
+                <input class="form-control" type="hidden" name="user_name" value="{{ $reply[0]->sender_id }}" />
+                <input class="form-control" type="text" name="user_name" value="{{ $reply[0]->sender_id }} " disabled/>
                 <br>
                 <label for="name">标题：</label>
-                <input class="form-control" type="text" name="title" value="{{ $reply[0]->title }} " />
+                <input class="form-control" type="hidden" name="title" value="{{ $reply[0]->title }}" />
+                <input class="form-control" type="text" name="title" value="{{ $reply[0]->title }} " disabled/>
                 <br>
                 <label for="name">申请种类：</label>
-                <input class="form-control" type="text" name="category_id" value="{{ $reply[0]->kind }} " />
+                <input class="form-control" type="hidden" name="category_id" value="{{ $reply[0]->kind }}" />
+                <input class="form-control" type="text" name="category_id" value="{{ $reply[0]->kind }} " disabled/>
               </div>
 
               <div class="form-group">
                 <label for="name">申请内容：</label>
-                <textarea name="content" class="form-control" id="editor" rows="6" required >{{ $reply[0]->content }}</textarea>
+                <textarea name="content" class="form-control" id="editor" rows="6" required  style="display: none;">{{ $reply[0]->content }}</textarea>
+                <textarea name="content" class="form-control" id="editor" rows="6" required disabled>{{ $reply[0]->content }}</textarea>
               </div>
 
               <div class="form-group">
