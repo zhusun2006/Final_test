@@ -21,12 +21,14 @@
 <body>
 
   @include('layouts._header')
+
   <div class="main">
     <div class="container">
       @include('shared._messages')
       @yield('content')
     </div>
   </div>
+
   @include('layouts._footer')
 
   <!-- Scripts -->

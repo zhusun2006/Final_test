@@ -21,12 +21,14 @@
 <body>
 
   <?php echo $__env->make('layouts._header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
   <div class="main">
     <div class="container">
       <?php echo $__env->make('shared._messages', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
       <?php echo $__env->yieldContent('content'); ?>
     </div>
   </div>
+
   <?php echo $__env->make('layouts._footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
   <!-- Scripts -->
