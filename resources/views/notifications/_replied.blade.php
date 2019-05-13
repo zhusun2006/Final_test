@@ -34,7 +34,7 @@
       </div>
         @else
           <br/>
-          标题为“{{ $notification->title }}”的申请已经被管理员审批了！<a href="{{ route('result', $notification->id) }}">点此查看详情</a>
+          标题为“{{ $notification->title }}”的申请已经被管理员审批了！<a href="{{ route('resultofnotice', $notification->id) }}">点此查看详情</a>
           <span class="meta float-right" title="{{ $notification->created_at }}">
             <i class="far fa-clock"></i>
             {{ $notification->created_at->diffForHumans() }}

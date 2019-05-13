@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <div>
-    <a class="navbar-brand" href="<?php echo e(route('home'), false); ?>">办公OA系统</a>
-    <a class="navbar-brand" href="<?php echo e(route('topics.index'), false); ?>">查看公告</a>
-  </div>
+      <a class="navbar-brand" href="<?php echo e(route('home'), false); ?>">办公OA系统</a>
+      <a class="navbar-brand" href="<?php echo e(route('topics.index'), false); ?>">查看公告</a>
+    </div>
     <ul class="navbar-nav justify-content-end">
       <?php if(Auth::check()): ?>
         <li class="nav-item notification-badge">
@@ -23,7 +23,7 @@
             <a class="dropdown-item" href="<?php echo e(route('users.show', Auth::user()), false); ?>">个人中心</a>
             <a class="dropdown-item" href="<?php echo e(route('users.edit', Auth::user()), false); ?>">编辑资料</a>
       			<a class="dropdown-item" href="<?php echo e(route('apply', Auth::user()), false); ?>">申请审核</a>
-      			<a class="dropdown-item" href="<?php echo e(route('thread', Auth::user()), false); ?>">审核进度</a>
+      			<a class="dropdown-item" href="<?php echo e(route('thread', Auth::user()), false); ?>">我的申请</a>
             <?php if(Auth::user()->is_admin == 1): ?>
               <a class="dropdown-item" href="<?php echo e(route('inform', Auth::user()), false); ?>">特权通告</a>
             <?php else: ?>

@@ -27,7 +27,7 @@
     </div>
     <?php else: ?>
       <br/>
-      标题为“<?php echo e($reply->title, false); ?>”的申请已经被管理员审批了，请注意查看消息通知！</a>
+      标题为“<?php echo e($reply->title, false); ?>”的申请已经被管理员审批了，<a href="<?php echo e(route('resultofreply', $reply->id), false); ?>">点此查看审核结果</a>
       <span class="meta float-right" title="<?php echo e($reply->updated_at, false); ?>">
         <i class="far fa-clock"></i>
         <?php echo e($reply->updated_at->diffForHumans(), false); ?>

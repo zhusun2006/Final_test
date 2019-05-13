@@ -38,7 +38,7 @@
       </div>
         <?php else: ?>
           <br/>
-          标题为“<?php echo e($notification->title, false); ?>”的申请已经被管理员审批了！<a href="<?php echo e(route('result', $notification->id), false); ?>">点此查看详情</a>
+          标题为“<?php echo e($notification->title, false); ?>”的申请已经被管理员审批了！<a href="<?php echo e(route('resultofnotice', $notification->id), false); ?>">点此查看详情</a>
           <span class="meta float-right" title="<?php echo e($notification->created_at, false); ?>">
             <i class="far fa-clock"></i>
             <?php echo e($notification->created_at->diffForHumans(), false); ?>

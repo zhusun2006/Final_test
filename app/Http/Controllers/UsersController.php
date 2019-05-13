@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers;
 use App\Models\User;
+use App\Models\Admin;
 use Auth;
 
 class UsersController extends Controller
@@ -25,7 +26,18 @@ class UsersController extends Controller
 	public function apply(User $user)
     {
     	$this->authorize('update', $user);
-        return view('users.apply', compact('user'));
+    	$is_admin = $user->is_admin;
+    	if($is_admin == 1)
+    	{
+    		$admin_list = Admin::all();
+    	}
+    	if($is_admin == 0)
+    	{
+    		$department = $user->department;
+    		$admin_list = Admin::where('department', $department)->get();
+    	}
+
+        return view('users.apply', compact('user','admin_list'));
     }
 
     public function inform(User $user)

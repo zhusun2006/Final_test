@@ -23,7 +23,7 @@
     </div>
     @else
       <br/>
-      标题为“{{ $reply->title }}”的申请已经被管理员审批了，请注意查看消息通知！</a>
+      标题为“{{ $reply->title }}”的申请已经被管理员审批了，<a href="{{ route('resultofreply', $reply->id) }}">点此查看审核结果</a>
       <span class="meta float-right" title="{{ $reply->updated_at }}">
         <i class="far fa-clock"></i>
         {{ $reply->updated_at->diffForHumans() }}

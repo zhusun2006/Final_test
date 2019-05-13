@@ -142,8 +142,20 @@ body {
   margin-bottom: 80px;
 }
 
-.maincard {
-  position: absolute;
-  left:-400px;
-  width:100%;
+.mainsider {
+  background-color:#343a40;
+  padding:20px;
+  border:solid 1px black;
+  position: fixed;
+  left:0px;
+  width:200px;
+  height:84%;
+
+}
+.mainsider ul{
+  font-size:17px;
+  padding: 10px;
+  li{
+    padding:5px 0px;
+  }
 }

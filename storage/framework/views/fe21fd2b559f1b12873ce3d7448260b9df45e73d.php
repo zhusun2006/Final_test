@@ -16,9 +16,18 @@
               <input type="hidden" name="is_check" value="0"/>
               <?php echo $__env->make('shared._errors', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
               <div class="form-group">           
-              	<input class="form-control" type="text" name="user_name" value="" placeholder="请输入接收者"/>
+              	<div>接收人：</div>
+                <select class="form-control" name="user_name" required>
+                  <option value="" hidden disabled selected>下拉显示部门管理员</option>
+                  <?php $__currentLoopData = $admin_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <option value="<?php echo e($value->id, false); ?>">
+                        <?php echo e($value->name, false); ?>
+
+                      </option>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
               	<br>
-                <input class="form-control" type="text" name="title" value="" placeholder="请填入申请标题"/>
+                申请标题：<input class="form-control" type="text" name="title" value="" placeholder="请填入申请标题"/>
               </div>
 
               <div class="form-group">

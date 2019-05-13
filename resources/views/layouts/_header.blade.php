@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <div>
-    <a class="navbar-brand" href="{{ route('home') }}">办公OA系统</a>
-    <a class="navbar-brand" href="{{ route('topics.index') }}">查看公告</a>
-  </div>
+      <a class="navbar-brand" href="{{ route('home') }}">办公OA系统</a>
+      <a class="navbar-brand" href="{{ route('topics.index') }}">查看公告</a>
+    </div>
     <ul class="navbar-nav justify-content-end">
       @if (Auth::check())
         <li class="nav-item notification-badge">
@@ -21,7 +21,7 @@
             <a class="dropdown-item" href="{{ route('users.show', Auth::user()) }}">个人中心</a>
             <a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">编辑资料</a>
       			<a class="dropdown-item" href="{{ route('apply', Auth::user()) }}">申请审核</a>
-      			<a class="dropdown-item" href="{{ route('thread', Auth::user()) }}">审核进度</a>
+      			<a class="dropdown-item" href="{{ route('thread', Auth::user()) }}">我的申请</a>
             @if(Auth::user()->is_admin == 1)
               <a class="dropdown-item" href="{{ route('inform', Auth::user()) }}">特权通告</a>
             @else

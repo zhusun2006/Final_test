@@ -17,9 +17,17 @@
               <input type="hidden" name="is_check" value="0"/>
               @include('shared._errors')
               <div class="form-group">           
-              	<input class="form-control" type="text" name="user_name" value="" placeholder="请输入接收者"/>
+              	<div>接收人：</div>
+                <select class="form-control" name="user_name" required>
+                  <option value="" hidden disabled selected>下拉显示部门管理员</option>
+                  @foreach ($admin_list as $value)
+                      <option value="{{ $value->id }}">
+                        {{ $value->name }}
+                      </option>
+                  @endforeach
+                </select>
               	<br>
-                <input class="form-control" type="text" name="title" value="" placeholder="请填入申请标题"/>
+                申请标题：<input class="form-control" type="text" name="title" value="" placeholder="请填入申请标题"/>
               </div>
 
               <div class="form-group">

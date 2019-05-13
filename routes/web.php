@@ -27,7 +27,9 @@ Route::get('/users/{user}/inform', 'UsersController@inform')->name('inform');
 Route::get('/notices', 'NotificationsController@index')->name('notice');
 Route::get('/adminnotice', 'NotificationsController@adminnotice')->name('adminnotice');
 Route::get('/check', 'NotificationsController@check')->name('check');
-Route::get('/result', 'NotificationsController@result')->name('result');
+Route::get('/resultofnotice', 'NotificationsController@resultofnotice')->name('resultofnotice');
+Route::get('/resultofreply', 'NotificationsController@resultofreply')->name('resultofreply');
+
 Route::get('/threads', 'NotificationsController@watch')->name('thread');
 
 Route::get('/check/download', 'UploadController@download')->name('download');
