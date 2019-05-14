@@ -47,9 +47,7 @@
           {!! $topics->appends(Request::except('page'))->render() !!}
         </div>
       </div>
-
     </div>
-
   </div>
 
   <div class="col-lg-3 col-md-3 sidebar">

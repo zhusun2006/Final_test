@@ -110,7 +110,8 @@ class UsersController extends Controller
 		if($check == 'admin')
 		{
 			$this->authorize('check',$user);
-			
+			$
+
 			$data = [];
 			//执行头像数据上传
 	        if ($request->avatar) {

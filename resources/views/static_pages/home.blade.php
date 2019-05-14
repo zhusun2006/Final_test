@@ -4,13 +4,18 @@
   <div class="jumbotron">
     <h1>基于PHP的办公自动化系统</h1>
     <p class="lead">
-      这是基于 <a href="https://laravel-china.org/courses/laravel-essential-training">Laravel框架</a> 搭建的PHP办公自动化系统。
+      这是基于<a href="https://laravel-china.org">Laravel框架</a>搭建的PHP办公自动化系统。
     </p>
     <p>
-      欢迎使用本OA办公系统
+      欢迎使用本办公自动化系统
     </p>
-    <p>
+    <!-- <p>
       <a class="btn btn-lg btn-success" href="{{ route('signup') }}" role="button">游客注册</a>
-    </p>
+    </p> -->
   </div>
+  <div class="card-body" style="background: #e9ecef;">
+    <h3>最新公告</h3>
+    @include('topics._topic_list', ['topics' => $topics])
+  </div>
+
 @stop
