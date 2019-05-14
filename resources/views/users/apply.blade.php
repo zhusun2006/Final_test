@@ -21,7 +21,7 @@
                 <select class="form-control" name="user_name" required>
                   <option value="" hidden disabled selected>下拉显示部门管理员</option>
                   @foreach ($admin_list as $value)
-                      <option value="{{ $value->id }}">
+                      <option value="{{ $value->name }}">
                         {{ $value->name }}
                       </option>
                   @endforeach

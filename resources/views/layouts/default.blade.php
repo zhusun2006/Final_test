@@ -7,11 +7,9 @@
   </head>
   <body>
     @include('layouts._header')
-    <div class="main">
-    <div class="container">
-      <div class="offset-md-1 col-md-10">
-        @if (Auth::check())
+    @if (Auth::check())
         <div class="mainsider">
+          <div class="siderbar">
           <div class="col-lg-10 col-md-3">
               <div style="font-size: 24px;color:white;">快捷功能</div>
                 <ul class="navbar-nav">        
@@ -26,8 +24,13 @@
                 </ul>
           </div>
         </div>
+        </div>
       @else
       @endif
+    <div class="main">
+    <div class="container">
+      <div class="offset-md-1 col-md-10">
+
 	      @include('shared._messages')
         @yield('content')
       </div>

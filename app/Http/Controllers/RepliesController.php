@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reply;
 use App\Models\User;
+use App\Models\Admin;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class RepliesController extends Controller
 	{
         //获取日期
 		$today = date('Y-m-d');
+
         //获取提交者的用户Id
 		$username = $request->user_name;
         $user_id = User::where('name', $username)->value('id');
@@ -48,15 +50,22 @@ class RepliesController extends Controller
                     $filename = date('Y-m-d-h-i-s').'.'.$ext;
                 }
             }
+            $user_access = User::where('id', Auth::id())->value('is_admin');
+            $user_department = User::where('id', Auth::id())->value('department');
+            if($user_access == 1)
+            {
+                $admin_list = Admin::all();
+            }
+            if($user_access == 0)
+            {
+                $admin_list = Admin::where('department', $user_department)->get();
+            }
 
             if($user_id == Auth::id())
             {
                 session()->flash('danger','不允许将申请发送给自身！');
-                return view('users.apply', compact('user'));
+                return view('users.apply', compact('user','admin_list'));
             }
-
-            $user_access = User::where('id', Auth::id())->value('is_admin');
-            $user_department = User::where('id', Auth::id())->value('department');
 
             //如果权限是管理员级别的用户，则只能给同为管理员的人发送申请
             if($user_access == 1)
@@ -65,7 +74,7 @@ class RepliesController extends Controller
                 if($tag == 0)
                 {
                     session()->flash('warning','管理员只允许将申请提交给其他管理员或者部门管理！');
-                    return view('users.apply', compact('user'));
+                    return view('users.apply', compact('user','admin_list'));
                 }
                 //将申请或者回复的记录保存至数据库
                 try
@@ -89,7 +98,7 @@ class RepliesController extends Controller
                 }catch (\Illuminate\Database\QueryException $ex) 
                 {  
                     session()->flash('warning','申请失败，你的标题或者内容不合法，请重试！');
-                    return view('users.apply', compact('user')); 
+                    return view('users.apply', compact('user','admin_list')); 
                 }  
                 //获取保存记录的id
                 $reply_id = Reply::where(['user_id' => $user_id, 'title' => $request->title, 'content' => $request->content])->value('id');
@@ -120,16 +129,15 @@ class RepliesController extends Controller
                 if($tag == 0)
                 {
                     session()->flash('warning','用户只允许将申请提交给管理员或者部门管理！');
-                    return view('users.apply', compact('user'));
+                    return view('users.apply', compact('user','admin_list'));
                 }
                 else
                 {
                     $tag_department = User::where('id', $user_id)->value('department');
-
                     if($tag_department != $user_department)
                     {
                         session()->flash('warning','用户只允许将申请提交给本部门管理员或部门管理！');
-                        return view('users.apply', compact('user'));
+                        return view('users.apply', compact('user','admin_list'));
                     }
                     else
                     {
@@ -154,7 +162,7 @@ class RepliesController extends Controller
                         }catch (\Illuminate\Database\QueryException $ex) 
                         {  
                             session()->flash('warning','申请失败，你的标题或者内容不合法，请重试！');
-                            return view('users.apply', compact('user')); 
+                            return view('users.apply', compact('user','admin_list')); 
                         }  
                         //获取保存记录的id
                         $reply_id = Reply::where(['user_id' => $user_id, 'title' => $request->title, 'content' => $request->content])->value('id');
@@ -186,7 +194,7 @@ class RepliesController extends Controller
         {
             if($user_id == Auth::id()){
                 session()->flash('danger','不允许将回复发送给自身！');
-                return view('users.apply', compact('user'));
+                return view('users.apply', compact('user','admin_list'));
             }
 
             $user_access = User::where('id', Auth::id())->value('is_admin');
@@ -255,7 +263,7 @@ class RepliesController extends Controller
             if($user_id == Auth::id())
             {
                 session()->flash('danger','不允许将通告发送给自身！');
-                return view('users.apply', compact('user'));
+                return view('users.apply', compact('user','admin_list'));
             }
 
             $user_access = User::where('id', Auth::id())->value('is_admin');
@@ -286,7 +294,7 @@ class RepliesController extends Controller
                 }catch (\Illuminate\Database\QueryException $ex) 
                 {  
                     session()->flash('warning','发送失败，发生未知错误，请重试！');
-                    return view('users.apply', compact('user')); 
+                    return view('users.apply', compact('user','admin_list')); 
                 }  
                 //获取保存记录的id
                 $reply_id = Reply::where(['user_id' => $user_id, 'title' => $request->title, 'content' => $request->content])->value('id');

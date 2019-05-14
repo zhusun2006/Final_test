@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', '审核查看'); ?>
+<?php $__env->startSection('title', '我的申请'); ?>
 
 <?php $__env->startSection('content'); ?>
   <div class="container">
@@ -8,7 +8,7 @@
         <div class="card-body">
 
           <h3 class="text-xs-center">
-            <i class="far fa-bell" aria-hidden="true"></i>审核查看
+            <i class="far fa-bell" aria-hidden="true"></i>我的申请
           </h3>
           <hr>
 

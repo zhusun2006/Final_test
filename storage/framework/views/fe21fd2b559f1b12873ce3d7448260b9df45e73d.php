@@ -20,7 +20,7 @@
                 <select class="form-control" name="user_name" required>
                   <option value="" hidden disabled selected>下拉显示部门管理员</option>
                   <?php $__currentLoopData = $admin_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      <option value="<?php echo e($value->id, false); ?>">
+                      <option value="<?php echo e($value->name, false); ?>">
                         <?php echo e($value->name, false); ?>
 
                       </option>

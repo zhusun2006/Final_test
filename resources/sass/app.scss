@@ -143,14 +143,16 @@ body {
 }
 
 .mainsider {
+  position:relative;
+  .siderbar{
   background-color:#343a40;
   padding:20px;
   border:solid 1px black;
-  position: fixed;
+  position: absolute;
   left:0px;
   width:200px;
-  height:84%;
-
+  height:500px;
+}
 }
 .mainsider ul{
   font-size:17px;

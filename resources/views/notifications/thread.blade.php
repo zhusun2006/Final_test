@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', '审核查看')
+@section('title', '我的申请')
 
 @section('content')
   <div class="container">
@@ -10,7 +10,7 @@
         <div class="card-body">
 
           <h3 class="text-xs-center">
-            <i class="far fa-bell" aria-hidden="true"></i>审核查看
+            <i class="far fa-bell" aria-hidden="true"></i>我的申请
           </h3>
           <hr>
 

@@ -5,7 +5,7 @@
     </p>
 
     <div class="float-right">
-    	<a href="<?php echo e(route('about'), false); ?>" >关于</a>
+    	<a href="<?php echo e(route('about'), false); ?>" >关于我们</a>
   	</div>
   </div>
 </footer>

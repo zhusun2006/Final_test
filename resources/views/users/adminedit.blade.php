@@ -41,16 +41,16 @@
             </div>
 
             <div class="form-group">
-              <label for="department">原职位：</label>
+              <label for="department">原所属部门：</label>
               <input type="text" name="department" class="form-control" value="{{ $user->department }}" disabled>
-              <label for="department">新职位：</label>
+              <label for="department">新所属部门：</label>
               <input type="text" name="department" class="form-control" value="" >
             </div>
 
             <div class="form-group">
-              <label for="position">原所属部门：</label>
+              <label for="position">原职位：</label>
               <input type="text" name="position" class="form-control" value="{{ $user->position }}" disabled>
-              <label for="position">新所属部门：</label>
+              <label for="position">新职位：</label>
               <input type="text" name="position" class="form-control" value="" >
             </div>
 

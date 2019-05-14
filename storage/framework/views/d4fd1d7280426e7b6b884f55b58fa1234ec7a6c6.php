@@ -1,13 +1,10 @@
-<?php $__env->startSection('title', '登录'); ?>
-
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('title', '用户登录'); ?>
 <?php $__env->startSection('content'); ?>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8" style="margin-top: 100px;">
       <div class="card">
         <div class="card-header"><?php echo e(__('Login'), false); ?></div>
-
         <div class="card-body">
           <form method="POST" action="<?php echo e(route('login'), false); ?>">
             <?php echo csrf_field(); ?>
