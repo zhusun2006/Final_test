@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title','核查审批')
+@section('title','核查申请')
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="card-body">
           <h2 class="">
             <i class="far fa-edit"></i>
-            核查审批
+            核查申请
           </h2>
           <hr>
             <a class="btn btn-link" href="{{ route('notice') }}"><-返回</a>
@@ -51,7 +51,9 @@
                   <label for="name">我的意见：</label>
                   <textarea name="adminreply" class="form-control" id="editor" rows="6" placeholder="请输入您的意见" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i>回复</button>          
+                <button type="submit" name="comfirm" value="已通过" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i>回复</button>
+
+                <button type="submit" name="comfirm" value="被驳回" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i>驳回</button>            
               </div>
             </form>           
         </div>

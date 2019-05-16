@@ -11,10 +11,5 @@
       <a class="btn btn-lg btn-success" href="<?php echo e(route('signup'), false); ?>" role="button">游客注册</a>
     </p> -->
   </div>
-  <div class="card-body" style="background: #e9ecef;">
-    <h3>最新公告</h3>
-    <?php echo $__env->make('topics._topic_list', ['topics' => $topics], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-  </div>
-
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

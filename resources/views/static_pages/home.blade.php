@@ -13,9 +13,4 @@
       <a class="btn btn-lg btn-success" href="{{ route('signup') }}" role="button">游客注册</a>
     </p> -->
   </div>
-  <div class="card-body" style="background: #e9ecef;">
-    <h3>最新公告</h3>
-    @include('topics._topic_list', ['topics' => $topics])
-  </div>
-
 @stop

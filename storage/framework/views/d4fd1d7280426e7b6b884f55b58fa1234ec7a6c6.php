@@ -1,8 +1,8 @@
 <?php $__env->startSection('title', '用户登录'); ?>
 <?php $__env->startSection('content'); ?>
-<div class="container">
+<div class="container" >
   <div class="row justify-content-center">
-    <div class="col-md-8" style="margin-top: 100px;">
+    <div class="col-md-8">
       <div class="card">
         <div class="card-header"><?php echo e(__('Login'), false); ?></div>
         <div class="card-body">
@@ -75,4 +75,4 @@
   </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('sessions.login', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

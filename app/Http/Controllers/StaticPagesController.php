@@ -13,8 +13,7 @@ class StaticPagesController extends Controller
 {
      public function home(Request $request, Topic $topic)
     {
-        $topics = $topic->withOrder($request->order)->take(5)->get();
-        return view('static_pages/home', compact('topics'));
+        return view('static_pages/home');
     }
 
     public function help()

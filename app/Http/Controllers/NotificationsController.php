@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Notification;
 use App\Models\User;
+use App\Models\Admin;
 use App\Models\Reply;
 use Auth;
 
@@ -47,7 +48,7 @@ class NotificationsController extends Controller
         $reply_id = Notification::where('id', $notice_id)->value('reply_id');
 
         $reply = Reply::where('id' , $reply_id)->get();
-        // var_dump($reply);
+
         return view('replies.index', compact('reply'));
     }
 
@@ -60,7 +61,7 @@ class NotificationsController extends Controller
         $reply_id = Notification::where('id', $notice_id)->value('reply_id');
 
         $reply = Reply::where('id' , $reply_id)->get();
-        //这里是审核结果页面
+
         return view('replies.result', compact('reply'));
     }
 
@@ -71,8 +72,29 @@ class NotificationsController extends Controller
         $reply = array_keys($request->all());
         $reply_id = $reply[0];
         $reply = Reply::where('id' , $reply_id)->get();
-        //这里是审核结果页面
+
         return view('replies.result', compact('reply'));
+    }
+
+    public function resultofedit(Request $request)
+    {
+        //通过消息获取回复的Id
+        //获取数组下标，传入的值迷之变成下标，所以这么解决了
+        $reply = array_keys($request->all());
+        $reply_id = $reply[0];
+        $reply = Reply::where('id' , $reply_id)->get();
+
+        $user_access = User::where('id', Auth::id())->value('is_admin');
+        $user_department = User::where('id', Auth::id())->value('department');
+        if($user_access == 1)
+        {
+            $admin_list = Admin::all();
+        }
+        if($user_access == 0)
+        {
+            $admin_list = Admin::where('department', $user_department)->get();
+        }
+        return view('replies.edit', compact('reply','admin_list'));
     }
 
     public function adminnotice(Request $request)

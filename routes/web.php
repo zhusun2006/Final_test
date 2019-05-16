@@ -29,6 +29,8 @@ Route::get('/adminnotice', 'NotificationsController@adminnotice')->name('adminno
 Route::get('/check', 'NotificationsController@check')->name('check');
 Route::get('/resultofnotice', 'NotificationsController@resultofnotice')->name('resultofnotice');
 Route::get('/resultofreply', 'NotificationsController@resultofreply')->name('resultofreply');
+Route::get('/resultofedit', 'NotificationsController@resultofedit')->name('resultofedit');
+
 
 Route::get('/threads', 'NotificationsController@watch')->name('thread');
 

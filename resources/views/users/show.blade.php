@@ -61,11 +61,11 @@
       	<div class="mb-1" id="arrange-one" style="display: block;">
       		@if($user->arrangement == null)
           <div class="form-group">
-              <textarea name="content_arr" class="form-control" id="editor" rows="15" disabled>暂无数据 ~_~</textarea>
+              <textarea name="content_arr" class="form-control" id="editor" rows="10" disabled>暂无数据 ~_~</textarea>
           </div>
       		@else
           <div class="form-group">
-              <textarea name="content_arr" class="form-control" id="editor" rows="15" disabled>{{ $user->arrangement }}</textarea>
+              <textarea name="content_arr" class="form-control" id="editor" rows="10" disabled>{{ $user->arrangement }}</textarea>
           </div>
       		@endif
       	</div>

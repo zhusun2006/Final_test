@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title','消息通告')
+@section('title','私人消息')
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="card-body">
           <h2 class="">
             <i class="far fa-edit"></i>
-            消息通告
+            私人消息
           </h2>
           <hr>
             <a class="btn btn-link" href="{{ route('notice') }}"><-返回</a>

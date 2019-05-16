@@ -38,7 +38,7 @@
       			  </div>
 
               <div class="well well-sm">
-                <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i>发送</button>          
+                <button type="submit" name="comfirm" value="私人消息" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i>发送</button>          
               </div>
             </form>           
         </div>

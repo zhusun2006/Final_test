@@ -25,6 +25,8 @@ class RepliesController extends Controller
 
         //获取提交者的用户Id
 		$username = $request->user_name;
+        $comfirm = $request->comfirm;
+
         $user_id = User::where('name', $username)->value('id');
         $sender_name =  User::where('id', Auth::id())->value('name');
 
@@ -40,7 +42,7 @@ class RepliesController extends Controller
             }
             if($file != null)
             {
-                if($file->isValid())          
+                if($file->isValid())
                 {
                     //获取文件的扩展名 
                     $ext = $file->getClientOriginalExtension();
@@ -84,12 +86,13 @@ class RepliesController extends Controller
                     $reply->user_id = $user_id;
                     $reply->sender_id = $sender_name;
                     $reply->kind = $request->category_id;
+                    $reply->admin_reply = $request->adminreply;
+                    $reply->status = $comfirm;
                     if($file != null)
                     {
                         $reply->filename = $filename;
                         $reply->route = 'uploads/'.$today.'/'.$filename;
                     }
-                    $reply->admin_reply = $request->adminreply;
                     $reply->save();
                     if($file != null)
                     {
@@ -148,12 +151,13 @@ class RepliesController extends Controller
                             $reply->user_id = $user_id;
                             $reply->sender_id = $sender_name;
                             $reply->kind = $request->category_id;
+                            $reply->admin_reply = $request->adminreply;
+                            $reply->status = $comfirm;
                             if($file != null)
                             {
                                 $reply->filename = $filename;
                                 $reply->route = 'uploads/'.$today.'/'.$filename;
                             }
-                            $reply->admin_reply = $request->adminreply;
                             $reply->save();
                             if($file != null)
                             {
@@ -206,6 +210,7 @@ class RepliesController extends Controller
                 $reply_id = Reply::where('title' , $request->title)->value('id');
                 $reply = Reply::find($reply_id);
                 $reply->admin_reply = $request->adminreply;
+                $reply->status = $comfirm;
                 $reply->save();
                 //获取保存记录的id
                 //将回复提交至消息通知中
@@ -228,7 +233,6 @@ class RepliesController extends Controller
                 $update->notification_count = $count;
                 $update->save();
 
-
                 //返回提交消息
                 $fallback = route('users.show', Auth::user());
                 return redirect()->intended($fallback)->with('success', '回复成功，现转至个人主页面！');;
@@ -238,6 +242,45 @@ class RepliesController extends Controller
             {
                 return back();
             }
+        }
+        if($is_check == 2 )
+        //复审
+        {
+            if($user_id == Auth::id()){
+            session()->flash('danger','不允许将回复发送给自身！');
+            return view('users.apply', compact('user','admin_list'));
+            }
+
+            $user_access = User::where('id', Auth::id())->value('is_admin');
+            $user_department = User::where('id', Auth::id())->value('department');
+
+            //将申请或者回复的记录保存至数据库
+            $reply_id = Reply::where('title' , $request->title)->value('id');
+            $reply = Reply::find($reply_id);
+            $reply->admin_reply = $request->adminreply;
+            $reply->status = $comfirm;
+            $reply->save();
+            //获取保存记录的id
+            //将回复提交至消息通知中
+            $notice = Notification::create([
+                'reply_id' => $reply_id,
+                'sender' => $sender_name,
+                'achiever' => $user_id,
+                'title' => $request->title,
+                'content' => $request->content,
+                'kind' => $request->category_id,
+                'admin_reply' => $request->adminreply,
+                'datetime' => $today
+            ]);
+            //用户的消息记录+1
+            $count = User::where('id', $user_id)->value('notification_count')+1;
+            $update = User::find($user_id);
+            $update->notification_count = $count;
+            $update->save();
+
+            //返回提交消息
+            $fallback = route('users.show', Auth::user());
+            return redirect()->intended($fallback)->with('success', '回复成功，现转至个人主页面！');;
         }
         //特权通告
         if($is_check == 99)

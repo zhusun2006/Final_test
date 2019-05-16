@@ -12,7 +12,7 @@
       </ul>
     </nav>
 
-
+<br/>
 <div class="row mb-5">
   <div class="col-lg-9 col-md-9 topic-list">
     <?php if(isset($category)): ?>
@@ -49,7 +49,7 @@
       </div>
     </div>
   </div>
-
+  <br/>
   <div class="col-lg-3 col-md-3 sidebar">
     <?php echo $__env->make('topics._sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   </div>

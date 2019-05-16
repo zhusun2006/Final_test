@@ -61,11 +61,11 @@
       	<div class="mb-1" id="arrange-one" style="display: block;">
       		<?php if($user->arrangement == null): ?>
           <div class="form-group">
-              <textarea name="content_arr" class="form-control" id="editor" rows="15" disabled>暂无数据 ~_~</textarea>
+              <textarea name="content_arr" class="form-control" id="editor" rows="10" disabled>暂无数据 ~_~</textarea>
           </div>
       		<?php else: ?>
           <div class="form-group">
-              <textarea name="content_arr" class="form-control" id="editor" rows="15" disabled><?php echo e($user->arrangement, false); ?></textarea>
+              <textarea name="content_arr" class="form-control" id="editor" rows="10" disabled><?php echo e($user->arrangement, false); ?></textarea>
           </div>
       		<?php endif; ?>
       	</div>

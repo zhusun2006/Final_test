@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
@@ -20,7 +21,8 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
 			$message = $request->is('signup') ? '尊敬的用户请勿重复注册！' : '您已登陆，无需再次操作';
             session()->flash('info', $message);
-            return redirect('/');
+            $user_id = User::where('id', Auth::id())->value('id');
+            return redirect()->route('users.show',$user_id);
         }
 
         return $next($request);
