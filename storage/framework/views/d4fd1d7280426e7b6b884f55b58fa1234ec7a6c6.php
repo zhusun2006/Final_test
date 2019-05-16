@@ -8,6 +8,7 @@
         <div class="card-body">
           <form method="POST" action="<?php echo e(route('login'), false); ?>">
             <?php echo csrf_field(); ?>
+             <?php echo $__env->make('shared._messages', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="form-group row">
               <label for="email" class="col-md-4 col-form-label text-md-right"><?php echo e(__('E-Mail Address'), false); ?></label>
 

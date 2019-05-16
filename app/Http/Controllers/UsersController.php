@@ -12,7 +12,12 @@ use Auth;
 
 class UsersController extends Controller
 {
-    public function create()
+    // public function create()
+    // {
+    //     return view('users.create');
+    // }
+
+    public function newuser()
     {
         return view('users.create');
     }
@@ -67,6 +72,7 @@ class UsersController extends Controller
 	
 	public function update(User $user, UserRequest $request, ImageUploadHandler $uploader)
 	{
+		//根据check来决定更新的内容，1为用户普通更新，2和3为用户日程安排、备忘录更新，admin为管理员更新
 		$check = $request->is_check;
 		if($check == 1)
 		{
@@ -145,18 +151,23 @@ class UsersController extends Controller
 		$this->validate($request,[
 			'name' => 'required|unique:users|max:50',
 			'email' => 'required|email|unique:users|max:255',
-			'password' => 'required|confirmed|min:6'			
+			'password' => 'required|min:6',
+			'department' => 'required',
+			'position' => 'required',
+			'tel' => 'required|min:11'			
 		]);
 		
 		$user = User::create([
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' => bcrypt($request->password),
+			'department' => $request->department,
+			'position' => $request->position,
+			'tel' => $request->tel,
+			'is_admin' => 0,
 		]);
-		
-		Auth::login($user);
-		session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
-		return redirect()->route('users.show', [$user]);
+		session()->flash('success','添加用户成功！');
+		return back();
 	}
 	
 	public function __construct()//过滤操作

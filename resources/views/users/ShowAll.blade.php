@@ -1,9 +1,9 @@
 @extends('layouts.default')
-@section('title','显示用户')
+@section('title','用户查阅')
 
 @section('content')
 <div class="offset-md-2 col-md-8">
-  <h2 class="mb-4 text-center">当前用户</h2>
+  <h2 class="mb-4 text-center">站点用户</h2>
   <div class="list-group list-group-flush">
     @foreach ($users as $user)
       @if(Auth::user()->is_admin == 0)

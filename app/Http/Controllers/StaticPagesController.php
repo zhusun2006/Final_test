@@ -11,9 +11,19 @@ use App\Http\Requests\TopicRequest;
 
 class StaticPagesController extends Controller
 {
-     public function home(Request $request, Topic $topic)
+     public function home()
     {
-        return view('static_pages/home');
+    	//检测当前用户session是否存在
+    	if(Auth::check())
+    	{
+    		$user_id = Auth::id();
+        	return redirect()->route('users.show',$user_id);
+    	}
+    	else
+    	{
+    		return view('sessions/create');
+    	}
+        
     }
 
     public function help()

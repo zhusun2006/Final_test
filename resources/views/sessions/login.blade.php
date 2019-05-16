@@ -10,11 +10,10 @@
       @include('layouts._sider')
     @else
     @endif
-    @include('shared._messages')
     <div class="main">
       <div class="jumbotron" style="height: 810px;">
         <h1>基于PHP的办公自动化系统</h1>
-        <div class="login" style="width:45%;float: right;">
+        <div class="login" style="width:800px;float: right;">
             @yield('content')
         </div>
         <p class="lead">

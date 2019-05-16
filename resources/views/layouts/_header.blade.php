@@ -22,9 +22,9 @@
             <a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">编辑资料</a>
       			<a class="dropdown-item" href="{{ route('apply', Auth::user()) }}">事务申请</a>
       			<a class="dropdown-item" href="{{ route('thread', Auth::user()) }}">我的申请</a>
-            <a class="dropdown-item" href="{{ route('users.index', Auth::user()) }}">用户列表</a>
+            <a class="dropdown-item" href="{{ route('users.index', Auth::user()) }}">用户查阅</a>
             @if(Auth::user()->is_admin == 1)
-              <a class="dropdown-item" href="{{ route('inform', Auth::user()) }}">特权通告</a>
+              <a class="dropdown-item" href="{{ route('inform', Auth::user()) }}">个人私信</a>
             @else
             @endif
           </div>

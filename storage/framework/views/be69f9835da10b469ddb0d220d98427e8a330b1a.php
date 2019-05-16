@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title><?php echo $__env->yieldContent('title', '办公OA系统'); ?> - Laravel 测试</title>
+  <title><?php echo $__env->yieldContent('title', '办公自动化系统'); ?> - Laravel</title>
 
   <!-- META TAGs -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

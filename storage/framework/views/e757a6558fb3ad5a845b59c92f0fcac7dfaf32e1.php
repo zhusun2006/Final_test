@@ -1,8 +1,8 @@
-<?php $__env->startSection('title','显示用户'); ?>
+<?php $__env->startSection('title','用户查阅'); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="offset-md-2 col-md-8">
-  <h2 class="mb-4 text-center">当前用户</h2>
+  <h2 class="mb-4 text-center">站点用户</h2>
   <div class="list-group list-group-flush">
     <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <?php if(Auth::user()->is_admin == 0): ?>

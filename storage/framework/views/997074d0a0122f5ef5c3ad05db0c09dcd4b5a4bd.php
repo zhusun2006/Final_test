@@ -24,9 +24,9 @@
             <a class="dropdown-item" href="<?php echo e(route('users.edit', Auth::user()), false); ?>">编辑资料</a>
       			<a class="dropdown-item" href="<?php echo e(route('apply', Auth::user()), false); ?>">事务申请</a>
       			<a class="dropdown-item" href="<?php echo e(route('thread', Auth::user()), false); ?>">我的申请</a>
-            <a class="dropdown-item" href="<?php echo e(route('users.index', Auth::user()), false); ?>">用户列表</a>
+            <a class="dropdown-item" href="<?php echo e(route('users.index', Auth::user()), false); ?>">用户查阅</a>
             <?php if(Auth::user()->is_admin == 1): ?>
-              <a class="dropdown-item" href="<?php echo e(route('inform', Auth::user()), false); ?>">特权通告</a>
+              <a class="dropdown-item" href="<?php echo e(route('inform', Auth::user()), false); ?>">个人私信</a>
             <?php else: ?>
             <?php endif; ?>
           </div>

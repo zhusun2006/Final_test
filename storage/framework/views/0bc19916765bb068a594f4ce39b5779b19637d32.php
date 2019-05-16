@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><?php echo $__env->yieldContent('title', '办公OA系统'); ?> - Laravel 测试</title>
+    <title><?php echo $__env->yieldContent('title', '办公自动化系统'); ?> - Laravel</title>
     <link rel="stylesheet" href="<?php echo e(mix('css/app.css'), false); ?>">
   </head>
   <body>
