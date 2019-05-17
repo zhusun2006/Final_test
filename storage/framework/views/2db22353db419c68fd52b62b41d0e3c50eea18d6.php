@@ -33,22 +33,21 @@
               <textarea name="remember_thing" class="form-control" id="editor" rows="5" disabled>暂无数据~_~</textarea>
           </div>  
       		<?php else: ?>
-          <div class="form-group">
+          <div class="form-group" >
               <textarea name="remember_thing" class="form-control" id="editor" rows="5" disabled><?php echo e($user->remember_thing, false); ?></textarea>
+              <br/>
+              <button id="btn-remember" class="btn btn-primary" onclick="setremember()">设置</button>
           </div> 
       		<?php endif; ?>
       	</div>
-      	<form method="POST" id="remember-two" action="<?php echo e(route('users.update', $user->id ), false); ?>" style="display: none;">
-      		<?php echo e(method_field('PATCH'), false); ?>
 
-      		<input type="hidden" name="_token" value="<?php echo e(csrf_token(), false); ?>">
-	        <input type="hidden" name="is_check" value="3"/>
-	        <div class="form-group">
-              <textarea name="remember_thing" class="form-control" id="editor" rows="5" placeholder="请填入内容"><?php echo e($user->remember_thing, false); ?></textarea>
+	        <div class="form-group" id="remember-two" style="display: none;">
+              <textarea name="remember_thing" class="form-control" id="remember" rows="5" placeholder="请填入内容"><?php echo e($user->remember_thing, false); ?></textarea>
+              <br/>
+              <button type="submit" class="btn btn-primary" id="updaterem">更新</button>
           </div>	    
-        	<button type="submit" class="btn btn-primary">更新</button>
-        </form>
-        	<button id="btn-remember" class="btn btn-primary" onclick="setremember()">设置</button>
+        	
+        	
       </div>
     </div>
     <hr>
@@ -66,26 +65,24 @@
       		<?php else: ?>
           <div class="form-group">
               <textarea name="content_arr" class="form-control" id="editor" rows="10" disabled><?php echo e($user->arrangement, false); ?></textarea>
+              <br/>
+              <button id="btn-arrange" class="btn btn-primary" onclick="setarrange()">设置</button>
           </div>
       		<?php endif; ?>
+          
       	</div>
-      	<form method="POST" id="arrange-two" action="<?php echo e(route('users.update', $user->id ), false); ?>" style="display: none;">
-      		<?php echo e(method_field('PATCH'), false); ?>
 
-      		<input type="hidden" name="_token" value="<?php echo e(csrf_token(), false); ?>">
-	        <input type="hidden" name="is_check" value="2"/>
-	        <div class="form-group">
-              <textarea name="content_arr" class="form-control" id="editor" rows="15" placeholder="请填入内容"><?php echo e($user->arrangement, false); ?></textarea>
-          </div>	    
-        	<button type="submit" class="btn btn-primary">更新</button>
-        </form>
-        	<button id="btn-arrange" class="btn btn-primary" onclick="setarrange()">设置</button>
+	        <div class="form-group" id="arrange-two" style="display: none;">
+              <textarea name="content_arr" class="form-control" id="arrangement" rows="10" placeholder="请填入内容"><?php echo e($user->arrangement, false); ?></textarea>
+              <br/>
+              <button type="submit" class="btn btn-primary" id="updatearr">更新</button>
+          </div>	
+
       </div>
     </div>
-
   </div>
-
 </div>
+
 <script type="text/javascript">
 	function setarrange(){
 			var arr_one = document.getElementById("arrange-one");
@@ -104,7 +101,40 @@
 			rem_two.style.display = "block";
 			btn.style.display = "none";
 	}
-	
+</script>
+
+<script>        
+  $('#updaterem').on("click",function(){  
+      var content = $("#remember").val();
+      $.ajax({
+          type: 'POST',
+          url: '/setremember',
+          data: { content : content, _token:"<?php echo e(csrf_token(), false); ?>"},
+          dataType: 'text',                
+          success: function(msg){            
+            alert('修改成功！');
+          },
+          error: function(msg){
+              console.log(msg);
+          }
+      }); 
+  });  
+
+  $('#updatearr').on("click",function(){  
+      var content = $("#arrangement").val();
+      $.ajax({
+          type: 'POST',
+          url: '/setarrangement',
+          data: { content : content, _token:"<?php echo e(csrf_token(), false); ?>"},               
+          dataType: 'text',                
+          success: function(msg){
+              alert('修改成功！');
+          },
+          error: function(msg){
+              console.log(msg);
+          }
+      }); 
+  });  
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

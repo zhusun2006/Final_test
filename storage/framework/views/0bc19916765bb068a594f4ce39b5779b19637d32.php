@@ -2,6 +2,8 @@
 <html>
   <head>
     <title><?php echo $__env->yieldContent('title', '办公自动化系统'); ?> - Laravel</title>
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="<?php echo e(mix('js/app.js'), false); ?>"></script>
     <link rel="stylesheet" href="<?php echo e(mix('css/app.css'), false); ?>">
   </head>
   <body>
@@ -21,4 +23,6 @@
     <?php echo $__env->make('layouts._footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   </body>
 </html>
-<script src="<?php echo e(mix('js/app.js'), false); ?>"></script>
+
+
+

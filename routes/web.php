@@ -32,7 +32,6 @@ Route::get('/resultofnotice', 'NotificationsController@resultofnotice')->name('r
 Route::get('/resultofreply', 'NotificationsController@resultofreply')->name('resultofreply');
 Route::get('/resultofedit', 'NotificationsController@resultofedit')->name('resultofedit');
 
-
 Route::get('/threads', 'NotificationsController@watch')->name('thread');
 
 Route::get('/check/download', 'UploadController@download')->name('download');
@@ -43,4 +42,9 @@ Route::resource('users', 'UsersController');
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+//ajax请求路由
+Route::post('/setremember', 'AjaxController@updaterem');
+Route::post('/setarrangement', 'AjaxController@updatearr');
+Route::post('/getadmin', 'AjaxController@getadmin');
+
 

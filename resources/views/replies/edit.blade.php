@@ -18,8 +18,8 @@
               @include('shared._errors')
               
                 <div class="form-group">           
-                  <label class="input-group-addon" style="font-size: 17px;">接收者：</label>
-                  <select class="form-control" name="user_name" required style="display: inline;width:87.5%;">
+                  <label class="input-group-addon" style="font-size: 17px;">接收用户：</label>
+                  <select class="form-control" name="user_name" required style="display: inline;width:85%;">
                     <option value="" hidden disabled selected>下拉显示部门管理员</option>
                     @foreach ($admin_list as $value)
                         <option value="{{ $value->name }}">
