@@ -4,7 +4,7 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>浏览公告</h1>
+        <h1><span class="glyphicon glyphicon-file"></span>浏览公告</h1>
       </div>
 
       <div class="card-body">
@@ -15,7 +15,7 @@
             </div>
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit', $user)): ?>
             <div class="col-md-6">
-              <a class="btn btn-sm btn-warning float-right mt-1" href="<?php echo e(route('topics.edit', $topic->id), false); ?>">
+              <a class="btn btn-sm btn-primary float-right mt-1" href="<?php echo e(route('topics.edit', $topic->id), false); ?>">
                 编辑
               </a>
             </div>
@@ -24,15 +24,15 @@
         </div>
         <br>
 
-        <label>标题</label>
-        <p>
+        <div style="font-size: 32px; text-align: center;">
         	<?php echo e($topic->title, false); ?>
 
-        </p> <label>内容</label>
-        <p>
+        </div> 
+        <hr>
+        <div style="min-height: 525px;font-size: 19px;">
         	<?php echo e($topic->body, false); ?>
 
-        
+        </div>
       </div>
     </div>
   </div>

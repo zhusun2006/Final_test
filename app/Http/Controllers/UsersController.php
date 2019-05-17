@@ -74,6 +74,10 @@ class UsersController extends Controller
 	{
 		//根据check来决定更新的内容，1为用户普通更新，2和3为用户日程安排、备忘录更新，admin为管理员更新
 		$check = $request->is_check;
+		$this->validate($request,[
+			'name' => 'nullable|unique:users|max:50',
+			'email' => 'nullable|email|unique:users|max:255',		
+		]);
 		if($check == 1)
 		{
 			$this->authorize('update',$user);
@@ -126,6 +130,9 @@ class UsersController extends Controller
 	        }
 	        if ($request->name) {
 	            $data['name'] = $request->name;
+	        }
+	        if ($request->name) {
+	            $data['email'] = $request->email;
 	        }
 	        if ($request->tel) {
 	            $data['tel'] = $request->tel;

@@ -18,7 +18,7 @@
               @include('shared._errors')
               <div class="form-group" > 
                 <label class="input-group-addon" style="font-size: 17px;">接收用户：</label>
-                <input class="form-control" type="text" name="title" value="" style="display: inline;width:85.5%;" placeholder="请填入申请标题"/>
+                <input class="form-control" type="text" name="user_name" value="" style="display: inline;width:85.5%;" placeholder="请填入申请标题"/>
               </div>
 
               <div class="form-group" > 

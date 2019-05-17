@@ -6,7 +6,7 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>浏览公告</h1>
+        <h1><span class="glyphicon glyphicon-file"></span>浏览公告</h1>
       </div>
 
       <div class="card-body">
@@ -17,7 +17,7 @@
             </div>
             @can('edit', $user)
             <div class="col-md-6">
-              <a class="btn btn-sm btn-warning float-right mt-1" href="{{ route('topics.edit', $topic->id) }}">
+              <a class="btn btn-sm btn-primary float-right mt-1" href="{{ route('topics.edit', $topic->id) }}">
                 编辑
               </a>
             </div>
@@ -26,13 +26,13 @@
         </div>
         <br>
 
-        <label>标题</label>
-        <p>
+        <div style="font-size: 32px; text-align: center;">
         	{{ $topic->title }}
-        </p> <label>内容</label>
-        <p>
+        </div> 
+        <hr>
+        <div style="min-height: 525px;font-size: 19px;">
         	{{ $topic->body }}
-        
+        </div>
       </div>
     </div>
   </div>

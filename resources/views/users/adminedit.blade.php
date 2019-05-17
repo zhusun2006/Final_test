@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-group">
-              <label for="email">原邮箱：</label>          
+              <label for="email">邮箱：</label>          
               <input type="text" name="email" class="form-control" value="{{ $user->email }}" disabled>
               <label for="email">新邮箱：</label>
               <input type="text" name="email" class="form-control" value="" >

@@ -41,7 +41,8 @@
               @else
               <div class="form-group" > 
                 <label class="input-group-addon" style="font-size: 17px;">接收用户：</label>
-                <input class="form-control" type="text" name="title" id="selected" value="" style="display: inline;width:85%;" disabled />
+                <input class="form-control" type="hidden" name="user_name" id="hidden" value="" style="display: inline;width:85%;"/>
+                <input class="form-control" type="text" name="user_name" id="selected" value="" style="display: inline;width:85%;" disabled />
               </div>
               @endif
               <div class="form-group" > 
@@ -79,6 +80,7 @@
         dataType: 'json',                
         success: function(msg,data){            
               $("#selected").val(msg.data);
+              $("#hidden").val(msg.data);
         },
         error: function(msg){
             console.log(msg);

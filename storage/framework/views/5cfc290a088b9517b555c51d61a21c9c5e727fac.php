@@ -10,7 +10,7 @@
       </ul>
   </div>
 </div>
-
+<br/>
 <?php if(Auth::user()->is_admin == 1): ?>
 <div class="card ">
   <div class="card-body">

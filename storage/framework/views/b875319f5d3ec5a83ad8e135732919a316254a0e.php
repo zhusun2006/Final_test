@@ -1,18 +1,19 @@
 <?php $__env->startSection('content'); ?>
 
- <div class="container">
-    <div class="col-md-10 offset-md-1">
-      <div class="card ">
-
-        <div class="card-body">
-          <h2 class="">
-            <i class="far fa-edit"></i>
+<div class="container">
+  <div class="col-md-10 offset-md-1">
+    <div class="card ">
+      <div class="card-body">
+        <h2 class="">
+          <i class="far fa-edit"></i>
             <?php if($topic->id): ?>
             编辑公告
             <?php else: ?>
             发布公告
             <?php endif; ?>
-          </h2>
+        </h2>
+
+          
 
           <hr>
 
@@ -44,17 +45,21 @@
               </div>
 
               <div class="form-group">
-                <textarea name="body" class="form-control" id="editor" rows="15" placeholder="请填入至少三个字符的内容。" required><?php echo e(old('body', $topic->body ), false); ?></textarea>
+                <textarea name="body" class="form-control" id="editor" rows="20" placeholder="请填入至少三个字符的内容。" required><?php echo e(old('body', $topic->body ), false); ?></textarea>
               </div>
 
               <div class="well well-sm">
-                <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 发布</button>          
+                <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i>发布</button>    
+                <button class="btn btn-primary">
+                  <a href="<?php echo e(route('topics.index'), false); ?>" style="color: white;"> 返回</a>
+                </button>       
               </div>
-            </form>           
-        </div>
+            </form>
+                          
       </div>
     </div>
   </div>
+</div>
 
 <?php $__env->stopSection(); ?>
 
